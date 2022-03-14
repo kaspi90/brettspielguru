@@ -13,19 +13,25 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = [ {name: 'Bundles', link: '/'}, {name: 'Kartenhüllen', link: 'Kartenhuellen'}];
+const pages = [
+  { name: 'Bundles', link: '/' },
+  { name: 'Kartenhüllen', link: 'Kartenhuellen' },
+];
 
 const useStyles = makeStyles({
   logo: {
     maxWidth: 120,
-    padding: 5
+    padding: 5,
   },
- 
 });
 
-let counter = 1
+let counter = 1;
 
-var scores = [[2, 7], [13, 47], [55, 77]];
+var scores = [
+  [2, 7],
+  [13, 47],
+  [55, 77],
+];
 
 const ResponsiveAppBar = () => {
   const classes = useStyles();
@@ -58,9 +64,12 @@ const ResponsiveAppBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <img src={logo} alt="Brettspielguru Logo" className={classes.logo} />
+            <img
+              src={logo}
+              alt="Brettspielguru Logo"
+              className={classes.logo}
+            />
           </Typography>
-
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -92,13 +101,15 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-
-                <Link to={page.link} style={{ textDecoration: 'none' ,color: 'black'}}>
-                  <MenuItem key={counter++} onClick={handleCloseNavMenu}>
+                <Link
+                  key={page.link}
+                  to={page.link}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
                 </Link>
-
               ))}
             </Menu>
           </Box>
@@ -108,29 +119,31 @@ const ResponsiveAppBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            <img src={logo} alt="Brettspielguru Logo" className={classes.logo} />
+            <img
+              src={logo}
+              alt="Brettspielguru Logo"
+              className={classes.logo}
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-         
-
             {pages.map((page) => (
-              <Link to={page.link} style={{ textDecoration: 'none' ,color:'white'}}>
+              <Link
+                key={page.link}
+                to={page.link}
+                style={{ textDecoration: 'none', color: 'white' }}
+              >
                 <Button
-                  key={counter++} 
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block', }}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page.name}
                 </Button>
               </Link>
-
             ))}
           </Box>
-
-
         </Toolbar>
-      </Container >
-    </AppBar >
+      </Container>
+    </AppBar>
   );
 };
 export default ResponsiveAppBar;
