@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     maxWidth: 120,
     padding: 5
   },
+ 
 });
 
 let counter = 1
@@ -92,7 +93,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
 
-                <Link to={page.link}>
+                <Link to={page.link} style={{ textDecoration: 'none' ,color: 'black'}}>
                   <MenuItem key={counter++} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
@@ -113,11 +114,11 @@ const ResponsiveAppBar = () => {
          
 
             {pages.map((page) => (
-              <Link to={page.link}>
+              <Link to={page.link} style={{ textDecoration: 'none' ,color:'white'}}>
                 <Button
                   key={counter++} 
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: 'white', display: 'block', }}
                 >
                   {page.name}
                 </Button>
