@@ -21,6 +21,8 @@ let SiedlervonCatan = Brettspiel("Siedler von Catan", {Premium44x66,Standard44x6
 let Carcasonne = Brettspiel("Carcasonne", {Premium44x66,Standard44x66});
 let TerraformingMars = Brettspiel("Siedler von Catan", {Premium44x66,Standard44x66});
 
+console.log(SiedlervonCatan.name)
+
 const GridRowsProp = [
   { id: 1, col1: Standard44x66.name, col2: Standard44x66.asin, col3: Standard44x66.link },
   { id: 2, col1: Premium44x66.name, col2: Premium44x66.asin, col3: Premium44x66.link },
