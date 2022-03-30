@@ -24,7 +24,7 @@ const theme = createTheme({
 });
 
 const Bundles = () => (
-  <div>
+  <div style={{ padding: 20 }}>
   <Selectgame />
   <br />
   <DataTable />
@@ -38,7 +38,6 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
       <ResponsiveAppBar />
-      <br/>
         <Routes>
         <Route path="/" element={<Bundles/>} />
         <Route path="/kartenhuellen" element={<Kartenhüllen/>} />
