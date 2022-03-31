@@ -1,12 +1,5 @@
 import React from 'react';
-import Product from './Product';
-import Brettspiel from './Brettspiel';
-import Premium44x66img from './img/44x66mm_Premium.jpg'
-import Standard44x66img from './img/44x66mm_Standard.jpg'
-import { makeStyles } from '@mui/styles';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import { Item, classes, SiedlervonCatan, Carcasonne } from './DataTable';

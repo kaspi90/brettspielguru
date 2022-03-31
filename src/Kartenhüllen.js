@@ -1,6 +1,6 @@
 import React from 'react';
 import PDFViewer from 'pdf-viewer-reactjs'
-import kartenhuellen_uebersicht from './kartenhuellen_uebersicht.jpeg';
+import kartenhuellen_uebersicht from './img/kartenhuellen_uebersicht.jpeg';
 
 
 const PDFViewerBrettspielguru = () => {

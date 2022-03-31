@@ -4,7 +4,6 @@ import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@emotion/react';
 import Selectgame from './Selectgame';
 import DataTable from './DataTable';
-import React, { Suspense, lazy } from 'react';
 import Kartenhüllen from './Kartenhüllen';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
