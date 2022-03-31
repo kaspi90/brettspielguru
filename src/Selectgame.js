@@ -6,11 +6,12 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
+
+
 export default function Selectgame() {
   const [Brettspiel, setBrettspiel] = React.useState('');
   const handleChange = (event) => {
     setBrettspiel(event.target.value);
-    
   };
 
   return (
@@ -24,9 +25,9 @@ export default function Selectgame() {
           label="Brettspiel"
           onChange={handleChange}
         >
-          <MenuItem value={"Siedler von Catan"} >Siedler von Catan</MenuItem>
-          <MenuItem value={"Carcasonne"} >Carcasonne</MenuItem>
-          <MenuItem value={"Terraforming Mars"} >Terraforming Mars</MenuItem>
+          <MenuItem value={Brettspiel} >Siedler von Catan</MenuItem>
+          <MenuItem value={Brettspiel} >Carcasonne</MenuItem>
+          <MenuItem value={Brettspiel} >Terraforming Mars</MenuItem>
         </Select>
       </FormControl>
     </Box>
