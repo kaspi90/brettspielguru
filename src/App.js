@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import ResponsiveAppBar from './ResponsiveAppBar';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@emotion/react';
@@ -6,6 +7,7 @@ import Selectgame from './Selectgame';
 import DataTable from './DataTable';
 import Kartenhüllen from './Kartenhüllen';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { gameContext } from './GameContext';
 
 const theme = createTheme({
   palette: {
@@ -24,26 +26,27 @@ const theme = createTheme({
 
 const Bundles = () => (
   <div style={{ padding: 20 }}>
-  <Selectgame />
-  <br />
-  <DataTable />
+    <Selectgame />
+    <br />
+    <DataTable />
   </div>
 );
 
 function App() {
-
+  const [game, setGame] = React.useState('');
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
-      <ResponsiveAppBar />
-        <Routes>
-        <Route path="/" element={<Bundles/>} />
-        <Route path="/kartenhuellen" element={<Kartenhüllen/>} />
-        </Routes>
+        <gameContext.Provider value={[game, setGame]}>
+          <ResponsiveAppBar />
+          <Routes>
+            <Route path="/" element={<Bundles />} />
+            <Route path="/kartenhuellen" element={<Kartenhüllen />} />
+          </Routes>
+        </gameContext.Provider>
       </ThemeProvider>
     </Router>
-
   );
 }
 

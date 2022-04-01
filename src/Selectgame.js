@@ -4,14 +4,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
-
-
+import { gameContext } from './GameContext';
 
 export default function Selectgame() {
-  const [Brettspiel, setBrettspiel] = React.useState('');
+  const [game, setGame] = React.useContext(gameContext);
   const handleChange = (event) => {
-    setBrettspiel(event.target.value);
+    setGame(event.target.value);
   };
 
   return (
@@ -21,17 +19,15 @@ export default function Selectgame() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={Brettspiel}
+          value={game}
           label="Brettspiel"
           onChange={handleChange}
         >
-          <MenuItem value={Brettspiel} >Siedler von Catan</MenuItem>
-          <MenuItem value={Brettspiel} >Carcasonne</MenuItem>
-          <MenuItem value={Brettspiel} >Terraforming Mars</MenuItem>
+          <MenuItem value="Siedler von Catan">Siedler von Catan</MenuItem>
+          <MenuItem value="Carcasonne">Carcasonne</MenuItem>
+          <MenuItem value="Terraforming Mars">Terraforming Mars</MenuItem>
         </Select>
       </FormControl>
     </Box>
   );
 }
-
-
