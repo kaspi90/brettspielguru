@@ -10,7 +10,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { gameContext } from './GameContext';
 import Impressum from './Impressum.js';
 import Datenschutz from './Datenschutz.js';
-import Blog from './InstagramBlog.js';
 import { Box, width } from '@mui/system';
 import axios from 'axios';
 import { Button } from '@mui/material';
@@ -53,7 +52,6 @@ function App() {
             <Route path="/kartenhuellen" element={<Kartenhüllen />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
-            <Route path="/InstagramBlog" element={<Blog />} />
           </Routes>
           </Box>
         </gameContext.Provider>

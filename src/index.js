@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -16,19 +16,18 @@ const firebaseConfig = {
   projectId: "brettspielguru-8eebe",
   storageBucket: "brettspielguru-8eebe.appspot.com",
   messagingSenderId: "763213882304",
-  appId: "1:763213882304:web:ffc6e321736c2c61f3de25"
+  appId: "1:763213882304:web:ffc6e321736c2c61f3de25",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 ReactDOM.render(
-
   <React.StrictMode>
-      <App />
+    <App />
   </React.StrictMode>,
 
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

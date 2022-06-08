@@ -12,7 +12,6 @@ import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import InstagramBlog from './InstagramBlog';
 
 const pages = [
   { name: 'Bundles', link: '/' },
