@@ -8,6 +8,12 @@ import DataTable from './DataTable';
 import Kartenhüllen from './Kartenhüllen';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { gameContext } from './GameContext';
+import Impressum from './Impressum.js';
+import Datenschutz from './Datenschutz.js';
+import Blog from './InstagramBlog.js';
+import { Box, width } from '@mui/system';
+import axios from 'axios';
+import { Button } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -25,25 +31,31 @@ const theme = createTheme({
 });
 
 const Bundles = () => (
-  <div style={{ padding: 20 }}>
-    <Selectgame />
-    <br />
-    <DataTable />
+  <div>
+      <Selectgame />
+      <br />
+      <DataTable />
   </div>
 );
 
 function App() {
   const [game, setGame] = React.useState('');
 
+ 
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <gameContext.Provider value={[game, setGame]}>
           <ResponsiveAppBar />
+          <Box maxWidth={'80%'} justify="center" m="auto" padding={2}>
           <Routes>
             <Route path="/" element={<Bundles />} />
             <Route path="/kartenhuellen" element={<Kartenhüllen />} />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
+            <Route path="/InstagramBlog" element={<Blog />} />
           </Routes>
+          </Box>
         </gameContext.Provider>
       </ThemeProvider>
     </Router>

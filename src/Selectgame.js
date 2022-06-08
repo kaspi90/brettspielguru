@@ -24,8 +24,11 @@ export default function Selectgame() {
           onChange={handleChange}
         >
           <MenuItem value="Siedler von Catan">Siedler von Catan</MenuItem>
-          <MenuItem value="Carcasonne">Carcasonne</MenuItem>
           <MenuItem value="Terraforming Mars">Terraforming Mars</MenuItem>
+          <MenuItem value="7 Wonders">7 Wonders</MenuItem>
+          <MenuItem value="TimeStories">Time Stories</MenuItem>
+          <MenuItem value="Everdell">Everdell</MenuItem>
+
         </Select>
       </FormControl>
     </Box>

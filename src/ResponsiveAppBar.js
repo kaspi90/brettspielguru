@@ -12,10 +12,15 @@ import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import InstagramBlog from './InstagramBlog';
 
 const pages = [
   { name: 'Bundles', link: '/' },
-  { name: 'Kartenhüllen', link: 'Kartenhuellen' },
+  { name: 'Kartenhüllen Größenfinder', link: 'Kartenhuellen' },
+  { name: 'Blog', link: 'InstagramBlog' },
+  { name: 'Impressum', link: 'Impressum' },
+  { name: 'Datenschutz', link: 'Datenschutz' },
+
 ];
 
 const useStyles = makeStyles({
@@ -57,6 +62,7 @@ const ResponsiveAppBar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
+        <Box maxWidth={'80%'} justify="center" m="auto">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -71,7 +77,7 @@ const ResponsiveAppBar = () => {
             />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -142,6 +148,7 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
         </Toolbar>
+        </Box>
       </Container>
     </AppBar>
   );

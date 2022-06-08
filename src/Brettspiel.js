@@ -1,5 +1,5 @@
-function Brettspiel(name, kartenhuellen, image) {
-    return {name, kartenhuellen, image}
+function Brettspiel(name, kartenhuellen, image, amazonlink, boardgamegeekId) {
+    return {name, kartenhuellen, image, amazonlink, boardgamegeekId}
 }
 
 export default Brettspiel;
