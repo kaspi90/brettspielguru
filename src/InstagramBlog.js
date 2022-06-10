@@ -4,26 +4,22 @@ import { Box } from "@mui/system";
 function InstagramBlog() {
   let data;
 
-  function accessInstagramFeed() {
-    const axios = require("axios");
+  const axios = require("axios");
 
-    axios({
-      method: "get",
-      url: "https://v1.nocodeapi.com/kaspi/instagram/KOTShLfOXSyGtqWm",
-      params: {},
+  axios({
+    method: "get",
+    url: "https://v1.nocodeapi.com/kaspi/instagram/KOTShLfOXSyGtqWm",
+    params: {},
+  })
+    .then(function (response) {
+      // handle success
+      console.log(response.data);
+      data = response.data;
     })
-      .then(function (response) {
-        // handle success
-        console.log(response.data);
-        data = response.data;
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-  }
-
-  accessInstagramFeed();
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
 
   console.log("test:" + data);
 
