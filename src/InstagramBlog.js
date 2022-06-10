@@ -1,27 +1,22 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 function InstagramBlog() {
-  let data;
+  const [resultArray, setResultArray] = useState([]);
 
-  const axios = require("axios");
+  useEffect(() => {
+    const instagramFeed = async () => {
+      await axios
+        .get("https://v1.nocodeapi.com/kaspi/instagram/KOTShLfOXSyGtqWm")
+        .then((response) => setResultArray(response.data));
+    };
+    instagramFeed();
+  }, []);
 
-  axios({
-    method: "get",
-    url: "https://v1.nocodeapi.com/kaspi/instagram/KOTShLfOXSyGtqWm",
-    params: {},
-  })
-    .then(function (response) {
-      // handle success
-      console.log(response.data);
-      data = response.data;
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    });
-
-  console.log("test:" + data);
+  console.log(resultArray);
 
   return (
     <Box>
