@@ -52,7 +52,10 @@ function MatchingSleeves() {
             alt="Siedler von Catan Logo"
             className={classes.ImgSleeves}
           />
-          <Button variant="contained" href={foundBoardgame.amazonlink}>
+          <Button
+            variant="contained"
+            href={foundBoardgame.amazonlink["amazonlink" + i]}
+          >
             Bei Amazon bestellen
           </Button>
         </Item>
