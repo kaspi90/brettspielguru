@@ -40,7 +40,7 @@ function InstagramBlog() {
     <Box>
       <Typography variant="h4" align="center">
         Unser Instagram-Feed:
-      </Typography>{" "}
+      </Typography>
       <Grid container spacing={2}>
         {resultArray.map((post) => (
           <Grid key={post.id} item xs={4}>
