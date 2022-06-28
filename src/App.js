@@ -11,7 +11,6 @@ import { gameContext } from "./GameContext";
 import Impressum from "./Impressum.js";
 import Datenschutz from "./Datenschutz.js";
 import { Box, width } from "@mui/system";
-import { Button } from "@mui/material";
 import InstagramBlog from "./InstagramBlog";
 
 const theme = createTheme({

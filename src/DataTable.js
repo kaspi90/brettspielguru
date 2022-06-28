@@ -41,6 +41,7 @@ let Standard44x66 = Product(
   "B0943XN3CC",
   "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XN3CC/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2EMKO66RIZC3S&keywords=B0943XN3CC&qid=1647046114&sprefix=b0943xn3cc%2Caps%2C46&sr=8-1"
 );
+let Standard56x82 = Product("56x82 mm Standard", "", "");
 let Premium47x70 = Product(
   "47x70 mm Premium",
   "B0943Y7D2L",
@@ -107,169 +108,151 @@ let Tichu;
 const brettspiele = [
   (SiedlervonCatan = Brettspiel(
     "Siedler von Catan",
-    "hier kommen die hüllen rein",
-    { Produktbild1: Standard56x82img },
+    "2x Standard47x70",
+    { Produktbild1: Standard47x70img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XNXY4/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1650582351&sprefix=brettspielguru%2B%2Caps%2C65&sr=8-5&th=1",
+      amazonlink1: Standard47x70.link,
     },
     13
   )),
   (TerraformingMars = Brettspiel(
     "Terraforming Mars",
-    "hier kommen die hüllen rein",
+    "3x Standard66x91",
     { Produktbild1: Standard66x91img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XY4YD/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3KFC8HCZUG8IG&keywords=B0943XY4YD&qid=1647046173&sprefix=b0943xy4yd%2Caps%2C50&sr=8-1",
+      amazonlink1: Standard66x91.link,
     },
     167791
   )),
   (SevenWonders = Brettspiel(
     "7 Wonders",
-    "hier kommen die hüllen rein",
+    "2x Standard67x103",
     { Produktbild1: Standard67x103img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XCPCL/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=WIOYHZDIPSMQ&keywords=B0943XCPCL&qid=1647046203&sprefix=b0943xcpcl%2Caps%2C55&sr=8-1",
+      amazonlink1: Standard67x103.link,
     },
     68448
   )),
   (Everdell = Brettspiel(
     "Everdell",
-    "hier kommen die hüllen rein",
+    "2x Standard44x66 und 1x Standard47x70",
     { Produktbild1: Standard66x91img, Produktbild2: Standard47x70img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XC75P/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1NAH4Q16B7U39&keywords=B0943XC75P&qid=1647046187&sprefix=b0943xc75p%2Caps%2C53&sr=8-1",
-      amazonlink2:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XSP1K/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1NAH4Q16B7U39&keywords=B0943XC75P&qid=1647046187&sprefix=b0943xc75p%2Caps%2C53&sr=8-1&th=1",
+      amazonlink1: Standard44x66.link,
+      amazonlink2: Standard47x70.link,
     },
     199792
   )),
   (TimeStories = Brettspiel(
     "TimeStories",
-    "hier kommen die hüllen rein",
+    "3x Standard67x103",
     { Produktbild1: Standard73x122img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943YFXML/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=5MP3CAI5AFAN&keywords=B0943YFXML&qid=1647046254&sprefix=b0943yfxml%2Caps%2C60&sr=8-1",
+      amazonlink1: Standard67x103.link,
     },
     146508
   )),
   (Gloomhaven = Brettspiel(
     "Gloomhaven",
-    "hier kommen die hüllen rein",
+    "10x Standard47x70 und 8x Standard66x91",
     { Produktbild1: Standard47x70img, Produktbild2: Standard66x91img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943Y7D2L/ref=sr_1_5?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3TP3O0VR0MMJQ&keywords=brettspielguru%2Bsleeves&qid=1655893214&sprefix=brettspielguru%2Bsleeves%2Caps%2C63&sr=8-5&th=1",
+      amazonlink1: Standard47x70.link,
 
-      amazonlink2:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XC75P/ref=sr_1_5?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3TP3O0VR0MMJQ&keywords=brettspielguru%2Bsleeves&qid=1655893214&sprefix=brettspielguru%2Bsleeves%2Caps%2C63&sr=8-5&th=1",
+      amazonlink2: Standard66x91.link,
     },
     174430
   )),
   (Wizard = Brettspiel(
     "Wizard",
-    "hier kommen die hüllen rein",
-    { Produktbild1: Standard66x91img },
+    "1x Standard59x90",
+    { Produktbild1: Standard59x90img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943YFXML/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=5MP3CAI5AFAN&keywords=B0943YFXML&qid=1647046254&sprefix=b0943yfxml%2Caps%2C60&sr=8-1",
+      amazonlink1: Standard59x90.link,
     },
     1465
   )),
   (Dune = Brettspiel(
     "Dune",
-    "hier kommen die hüllen rein",
+    "2x Standard66x91",
     { Produktbild1: Standard66x91img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943YFXML/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=5MP3CAI5AFAN&keywords=B0943YFXML&qid=1647046254&sprefix=b0943yfxml%2Caps%2C60&sr=8-1",
+      amazonlink1: Standard66x91.link,
     },
     316554
   )),
   (Mysterium = Brettspiel(
     "Mysterium",
-    "hier kommen die hüllen rein",
+    "2x Standard82x122, 1x Standard47x70, 1x Standard66x91",
     {
       Produktbild1: Standard82x122img,
       Produktbild2: Standard47x70img,
       Produktbild3: Standard66x91img,
     },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943Z8S82/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1655893658&sprefix=%2Caps%2C70&sr=8-5&th=1",
-      amazonlink2:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943Z8S82/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1655893658&sprefix=%2Caps%2C70&sr=8-5&th=1",
-      amazonlink3:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XC75P/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1655893658&sprefix=%2Caps%2C70&sr=8-5&th=1",
+      amazonlink1: Standard82x122.link,
+      amazonlink2: Standard47x70.link,
+      amazonlink3: Standard66x91.link,
     },
     181304
   )),
   (Bloodrage = Brettspiel(
     "Bloodrage",
-    "hier kommen die hüllen rein",
+    "2x Standard44x66",
     {
       Produktbild1: Standard44x66img,
     },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XN3CC/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1656326894&sprefix=brettspielguru%2B%2Caps%2C71&sr=8-5&th=1",
+      amazonlink1: Standard44x66.link,
     },
     170216
   )),
   (Viticulture = Brettspiel(
     "Viticulture",
-    "hier kommen die hüllen rein",
+    "2x Standard47x70 und 1x Standard66x91",
     { Produktbild1: Standard47x70img, Produktbild2: Standard66x91img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943Y7D2L/ref=sr_1_5?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3TP3O0VR0MMJQ&keywords=brettspielguru%2Bsleeves&qid=1655893214&sprefix=brettspielguru%2Bsleeves%2Caps%2C63&sr=8-5&th=1",
+      amazonlink1: Standard47x70.link,
 
-      amazonlink2:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XC75P/ref=sr_1_5?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3TP3O0VR0MMJQ&keywords=brettspielguru%2Bsleeves&qid=1655893214&sprefix=brettspielguru%2Bsleeves%2Caps%2C63&sr=8-5&th=1",
+      amazonlink2: Standard66x91.link,
     },
     128621
   )),
   (RedRising = Brettspiel(
     "RedRising",
-    "hier kommen die hüllen rein",
+    "1x Standard59x90, 2x Standard67x103",
     { Produktbild1: Standard59x90img, Produktbild2: Standard67x103img },
     {
-      amazonlink1: "",
+      amazonlink1: Standard59x90.link,
 
-      amazonlink2:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XSP1K/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1656326894&sprefix=brettspielguru%2B%2Caps%2C71&sr=8-5&th=1",
+      amazonlink2: Standard67x103.link,
     },
     329465
   )),
   (ForgottenWaters = Brettspiel(
     "ForgottenWaters",
-    "hier kommen die hüllen rein",
+    "3x Standard44x66",
     { Produktbild1: Standard44x66img },
     {
-      amazonlink1:
-        "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XN3CC/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1656326894&sprefix=brettspielguru%2B%2Caps%2C71&sr=8-5&th=1",
+      amazonlink1: Standard44x66.link,
     },
     302723
   )),
   (Paleo = Brettspiel(
     "Paleo",
-    "hier kommen die hüllen rein",
+    "3x Standard59x90",
     { Produktbild1: Standard59x90img },
     {
-      amazonlink1: "",
+      amazonlink1: Standard59x90.link,
     },
     300531
   )),
   (Tichu = Brettspiel(
     "Tichu",
-    "hier kommen die hüllen rein",
+    "2x Standard59x90",
     { Produktbild1: Standard59x90img },
     {
-      amazonlink1: "",
+      amazonlink1: Standard59x90.link,
     },
     215
   )),
