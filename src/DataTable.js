@@ -108,7 +108,7 @@ let Tichu;
 const brettspiele = [
   (SiedlervonCatan = Brettspiel(
     "Siedler von Catan",
-    "2x Standard47x70",
+    { Menge1: "2" },
     { Produktbild1: Standard47x70img },
     {
       amazonlink1: Standard47x70.link,
@@ -117,7 +117,7 @@ const brettspiele = [
   )),
   (TerraformingMars = Brettspiel(
     "Terraforming Mars",
-    "3x Standard66x91",
+    { Menge1: "3" },
     { Produktbild1: Standard66x91img },
     {
       amazonlink1: Standard66x91.link,
@@ -126,7 +126,7 @@ const brettspiele = [
   )),
   (SevenWonders = Brettspiel(
     "7 Wonders",
-    "2x Standard67x103",
+    { Menge1: "2" },
     { Produktbild1: Standard67x103img },
     {
       amazonlink1: Standard67x103.link,
@@ -135,7 +135,7 @@ const brettspiele = [
   )),
   (Everdell = Brettspiel(
     "Everdell",
-    "2x Standard44x66 und 1x Standard47x70",
+    { Menge1: "2", Menge2: "1" },
     { Produktbild1: Standard66x91img, Produktbild2: Standard47x70img },
     {
       amazonlink1: Standard44x66.link,
@@ -145,7 +145,7 @@ const brettspiele = [
   )),
   (TimeStories = Brettspiel(
     "TimeStories",
-    "3x Standard67x103",
+    { Menge1: "3" },
     { Produktbild1: Standard73x122img },
     {
       amazonlink1: Standard67x103.link,
@@ -154,7 +154,7 @@ const brettspiele = [
   )),
   (Gloomhaven = Brettspiel(
     "Gloomhaven",
-    "10x Standard47x70 und 8x Standard66x91",
+    { Menge1: "10", Menge2: "8" },
     { Produktbild1: Standard47x70img, Produktbild2: Standard66x91img },
     {
       amazonlink1: Standard47x70.link,
@@ -165,7 +165,7 @@ const brettspiele = [
   )),
   (Wizard = Brettspiel(
     "Wizard",
-    "1x Standard59x90",
+    { Menge1: "1" },
     { Produktbild1: Standard59x90img },
     {
       amazonlink1: Standard59x90.link,
@@ -174,7 +174,7 @@ const brettspiele = [
   )),
   (Dune = Brettspiel(
     "Dune",
-    "2x Standard66x91",
+    { Menge1: "2" },
     { Produktbild1: Standard66x91img },
     {
       amazonlink1: Standard66x91.link,
@@ -183,7 +183,7 @@ const brettspiele = [
   )),
   (Mysterium = Brettspiel(
     "Mysterium",
-    "2x Standard82x122, 1x Standard47x70, 1x Standard66x91",
+    { Menge1: "2", Menge2: "1", Menge3: "1" },
     {
       Produktbild1: Standard82x122img,
       Produktbild2: Standard47x70img,
@@ -198,7 +198,7 @@ const brettspiele = [
   )),
   (Bloodrage = Brettspiel(
     "Bloodrage",
-    "2x Standard44x66",
+    { Menge1: "2" },
     {
       Produktbild1: Standard44x66img,
     },
@@ -209,7 +209,7 @@ const brettspiele = [
   )),
   (Viticulture = Brettspiel(
     "Viticulture",
-    "2x Standard47x70 und 1x Standard66x91",
+    { Menge1: "2", Menge2: "1" },
     { Produktbild1: Standard47x70img, Produktbild2: Standard66x91img },
     {
       amazonlink1: Standard47x70.link,
@@ -220,7 +220,7 @@ const brettspiele = [
   )),
   (RedRising = Brettspiel(
     "RedRising",
-    "1x Standard59x90, 2x Standard67x103",
+    { Menge1: "1", Menge2: "2" },
     { Produktbild1: Standard59x90img, Produktbild2: Standard67x103img },
     {
       amazonlink1: Standard59x90.link,
@@ -231,7 +231,7 @@ const brettspiele = [
   )),
   (ForgottenWaters = Brettspiel(
     "ForgottenWaters",
-    "3x Standard44x66",
+    { Menge1: "3" },
     { Produktbild1: Standard44x66img },
     {
       amazonlink1: Standard44x66.link,
@@ -240,7 +240,7 @@ const brettspiele = [
   )),
   (Paleo = Brettspiel(
     "Paleo",
-    "3x Standard59x90",
+    { Menge1: "3" },
     { Produktbild1: Standard59x90img },
     {
       amazonlink1: Standard59x90.link,
@@ -249,7 +249,7 @@ const brettspiele = [
   )),
   (Tichu = Brettspiel(
     "Tichu",
-    "2x Standard59x90",
+    { Menge1: "2" },
     { Produktbild1: Standard59x90img },
     {
       amazonlink1: Standard59x90.link,

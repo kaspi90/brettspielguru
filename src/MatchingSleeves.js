@@ -52,6 +52,9 @@ function MatchingSleeves() {
             alt="Siedler von Catan Logo"
             className={classes.ImgSleeves}
           />
+          <Typography>
+            Benötigte Anzahl: {foundBoardgame.kartenhuellen["Menge" + i]} <br />
+          </Typography>
           <Button
             variant="contained"
             href={foundBoardgame.amazonlink["amazonlink" + i]}
