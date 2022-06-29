@@ -12,6 +12,7 @@ import Impressum from "./Impressum.js";
 import Datenschutz from "./Datenschutz.js";
 import { Box, width } from "@mui/system";
 import InstagramBlog from "./InstagramBlog";
+import CreateNote from "./CreateNote";
 
 const theme = createTheme({
   palette: {
@@ -30,6 +31,7 @@ const theme = createTheme({
 
 const Bundles = () => (
   <div>
+    <CreateNote />
     <Selectgame />
     <br />
     <DataTable />
