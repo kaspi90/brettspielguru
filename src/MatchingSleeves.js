@@ -2,15 +2,14 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { Item, classes, SiedlervonCatan, Carcasonne } from "./DataTable";
+import { Item, classes } from "./DataTable";
 import { gameContext } from "./GameContext";
 import { brettspiele } from "./DataTable";
-import Brettspiel from "./Brettspiel";
-import { ImgSleeves } from "./DataTable";
 import axios from "axios";
 import xml2json from "@hendt/xml2json";
 import { Typography } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
+import { boardgameRef } from "./firebase";
 
 function MatchingSleeves() {
   const [boardgameDescription, setBoardgameDescription] = React.useState("");
@@ -28,10 +27,24 @@ function MatchingSleeves() {
       });
   };
 
+  const ref = boardgameRef.child("-N5o9dAJ0L5CZTzOWOKI");
+  let brettspieleFirebase = [];
+
+  ref.on(
+    "value",
+    (snapshot) => {
+      console.log(snapshot.val());
+      brettspieleFirebase = snapshot.val();
+    },
+    (errorObject) => {
+      console.log("The read failed: " + errorObject.name);
+    }
+  );
+
   const [game] = React.useContext(gameContext);
   if (!game) return <></>;
 
-  const foundBoardgame = brettspiele.find((item) => {
+  const foundBoardgame = brettspieleFirebase.find((item) => {
     if (item.name == game) {
       return item;
     }
