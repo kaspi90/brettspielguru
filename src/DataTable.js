@@ -11,6 +11,22 @@ import Standard56x82img from "./img/56x82mm_Standard.jpg";
 import Standard82x122img from "./img/82x122mm_Standard.jpg";
 import Standard59x90img from "./img/59x90mm_Standard.jpg";
 import Standard66x91img from "./img/66x91mm_Standard.jpg";
+import tichu_img from "./img/tichu.webp";
+import blood_rage_img from "./img/blood_rage.webp";
+import catan_img from "./img/catan.webp";
+import dune_img from "./img/dune.webp";
+import everdell_img from "./img/everdell.webp";
+import forgotten_waters_img from "./img/forgotten_waters.webp";
+import gloomhaven_img from "./img/gloomhaven.webp";
+import mysterium_img from "./img/mysterium.webp";
+import paleo_img from "./img/paleo.webp";
+import red_rising_img from "./img/red_rising.webp";
+import terraforming_mars_img from "./img/terraforming_mars.webp";
+import viticulture_img from "./img/viticulture.webp";
+import time_stories_img from "./img/time_stories.webp";
+import wizard_img from "./img/wizard.webp";
+import sevenwonders_img from "./img/7wonders.webp";
+
 import { makeStyles } from "@mui/styles";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
@@ -113,7 +129,8 @@ const brettspiele = [
     {
       amazonlink1: Standard47x70.link,
     },
-    13
+    13,
+    catan_img
   )),
   (TerraformingMars = Brettspiel(
     "Terraforming Mars",
@@ -122,7 +139,8 @@ const brettspiele = [
     {
       amazonlink1: Standard66x91.link,
     },
-    167791
+    167791,
+    terraforming_mars_img
   )),
   (SevenWonders = Brettspiel(
     "7 Wonders",
@@ -131,7 +149,8 @@ const brettspiele = [
     {
       amazonlink1: Standard67x103.link,
     },
-    68448
+    68448,
+    sevenwonders_img
   )),
   (Everdell = Brettspiel(
     "Everdell",
@@ -141,7 +160,8 @@ const brettspiele = [
       amazonlink1: Standard44x66.link,
       amazonlink2: Standard47x70.link,
     },
-    199792
+    199792,
+    everdell_img
   )),
   (TimeStories = Brettspiel(
     "TimeStories",
@@ -150,7 +170,8 @@ const brettspiele = [
     {
       amazonlink1: Standard67x103.link,
     },
-    146508
+    146508,
+    time_stories_img
   )),
   (Gloomhaven = Brettspiel(
     "Gloomhaven",
@@ -161,7 +182,8 @@ const brettspiele = [
 
       amazonlink2: Standard66x91.link,
     },
-    174430
+    174430,
+    gloomhaven_img
   )),
   (Wizard = Brettspiel(
     "Wizard",
@@ -170,7 +192,8 @@ const brettspiele = [
     {
       amazonlink1: Standard59x90.link,
     },
-    1465
+    1465,
+    wizard_img
   )),
   (Dune = Brettspiel(
     "Dune",
@@ -179,7 +202,8 @@ const brettspiele = [
     {
       amazonlink1: Standard66x91.link,
     },
-    316554
+    316554,
+    dune_img
   )),
   (Mysterium = Brettspiel(
     "Mysterium",
@@ -194,7 +218,8 @@ const brettspiele = [
       amazonlink2: Standard47x70.link,
       amazonlink3: Standard66x91.link,
     },
-    181304
+    181304,
+    mysterium_img
   )),
   (Bloodrage = Brettspiel(
     "Bloodrage",
@@ -205,7 +230,8 @@ const brettspiele = [
     {
       amazonlink1: Standard44x66.link,
     },
-    170216
+    170216,
+    blood_rage_img
   )),
   (Viticulture = Brettspiel(
     "Viticulture",
@@ -216,7 +242,8 @@ const brettspiele = [
 
       amazonlink2: Standard66x91.link,
     },
-    128621
+    128621,
+    viticulture_img
   )),
   (RedRising = Brettspiel(
     "RedRising",
@@ -227,7 +254,8 @@ const brettspiele = [
 
       amazonlink2: Standard67x103.link,
     },
-    329465
+    329465,
+    red_rising_img
   )),
   (ForgottenWaters = Brettspiel(
     "ForgottenWaters",
@@ -236,7 +264,8 @@ const brettspiele = [
     {
       amazonlink1: Standard44x66.link,
     },
-    302723
+    302723,
+    forgotten_waters_img
   )),
   (Paleo = Brettspiel(
     "Paleo",
@@ -245,7 +274,8 @@ const brettspiele = [
     {
       amazonlink1: Standard59x90.link,
     },
-    300531
+    300531,
+    paleo_img
   )),
   (Tichu = Brettspiel(
     "Tichu",
@@ -254,7 +284,8 @@ const brettspiele = [
     {
       amazonlink1: Standard59x90.link,
     },
-    215
+    215,
+    tichu_img
   )),
 ];
 

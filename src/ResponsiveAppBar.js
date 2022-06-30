@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 const pages = [
   { name: "Bundles", link: "/" },
+  { name: "Brettspiel Suche", link: "brettspiel-Suche" },
   { name: "Kartenhüllen Größenfinder", link: "Kartenhuellen" },
   { name: "Blog", link: "InstagramBlog" },
   { name: "Impressum", link: "Impressum" },

@@ -12,6 +12,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 import PrintIcon from "@mui/icons-material/Print";
 import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import { maxHeight } from "@mui/system";
+import { Typography } from "@mui/material";
 
 const PDFViewerBrettspielguru = () => {
   return (
@@ -27,6 +28,8 @@ function Kartenhüllen() {
   return (
     <div>
       <Box sx={{ padding: 5 }}>
+        <Typography variant="h5">Kartenhüllen Größenfinder</Typography>
+        <br />
         Es gibt die unterschiedlichsten Kartengrößen und damit auch viele
         verschiedene Hüllen, die oftmals nur um ein paar Millimeter von einander
         abweichen. Da ist es nicht immer einfach die richtige Größe zu finden,
@@ -42,6 +45,8 @@ function Kartenhüllen() {
         }}
       >
         <Box>
+          <Typography variant="h5">Schritt-für-Schritt</Typography>
+
           <List
             sx={{ width: "100%", maxWidth: 500, bgcolor: "background.paper" }}
             aria-label="contacts"
@@ -73,6 +78,7 @@ function Kartenhüllen() {
           </List>
         </Box>
         <Box sx={{ maxHeight: 200 }}>
+          <Typography variant="h5">Übersicht</Typography>
           <img src={kartenhuellen_uebersicht} />
         </Box>
       </Box>

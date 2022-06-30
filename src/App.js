@@ -13,6 +13,8 @@ import Datenschutz from "./Datenschutz.js";
 import { Box, width } from "@mui/system";
 import InstagramBlog from "./InstagramBlog";
 import CreateBoardgame from "./CreateBoardgame";
+import Suche from "./BoardgameSearch";
+import BoardgameSearch from "./BoardgameSearch";
 
 /*
 CreateBoardgame();
@@ -51,6 +53,7 @@ function App() {
           <Box maxWidth={"80%"} justify="center" m="auto" padding={2}>
             <Routes>
               <Route path="/" element={<Bundles />} />
+              <Route path="/brettspiel-Suche" element={<BoardgameSearch />} />
               <Route path="/kartenhuellen" element={<Kartenhüllen />} />
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutz" element={<Datenschutz />} />
