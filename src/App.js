@@ -14,7 +14,9 @@ import { Box, width } from "@mui/system";
 import InstagramBlog from "./InstagramBlog";
 import CreateBoardgame from "./CreateBoardgame";
 
+/*
 CreateBoardgame();
+*/
 
 const theme = createTheme({
   palette: {
