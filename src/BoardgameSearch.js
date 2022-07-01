@@ -5,6 +5,28 @@ import * as React from "react";
 import { Item, classes } from "./DataTable";
 import { brettspiele } from "./DataTable";
 import { gameContext } from "./GameContext";
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
+import Autocomplete from "@mui/material/Autocomplete";
+
+const SearchBar = () => (
+  <Autocomplete
+    freeSolo
+    id="free-solo-2-demo"
+    disableClearable
+    options={brettspiele.map((option) => option.name)}
+    renderInput={(params) => (
+      <TextField
+        {...params}
+        label="Brettspiel Suche"
+        InputProps={{
+          ...params.InputProps,
+          type: "search",
+        }}
+      />
+    )}
+  />
+);
 
 function BoardgameSearch() {
   const [game, setGame] = React.useContext(gameContext);
@@ -24,12 +46,16 @@ function BoardgameSearch() {
   });
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        {boardgames_grid}
-      </Grid>
+    <div>
+      <SearchBar></SearchBar>
       <br />
-    </Box>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          {boardgames_grid}
+        </Grid>
+        <br />
+      </Box>
+    </div>
   );
 }
 
