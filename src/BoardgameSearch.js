@@ -8,15 +8,21 @@ import { gameContext } from "./GameContext";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
+import IconButton from "@mui/material";
 
 const SearchBar = () => (
   <Autocomplete
     freeSolo
-    id="free-solo-2-demo"
+    id="boardgame-search"
     disableClearable
     options={brettspiele.map((option) => option.name)}
     renderInput={(params) => (
       <TextField
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            console.log(e.target.value);
+          }
+        }}
         {...params}
         label="Brettspiel Suche"
         InputProps={{
