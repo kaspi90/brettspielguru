@@ -6,7 +6,7 @@ import { ThemeProvider } from "@emotion/react";
 import Selectgame from "./Selectgame";
 import DataTable from "./DataTable";
 import Kartenhüllen from "./Kartenhüllen";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { gameContext } from "./GameContext";
 import Impressum from "./Impressum.js";
 import Datenschutz from "./Datenschutz.js";

@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import IconButton from "@mui/material";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 const SearchBar = () => (
   <Autocomplete
@@ -34,17 +35,19 @@ const SearchBar = () => (
   />
 );
 
-function BoardgameSearch() {
+export default function BoardgameSearch() {
   const [game, setGame] = React.useContext(gameContext);
 
+  let count = 0;
   let boardgames_grid = [];
   brettspiele.forEach((element) => {
+    count = count + 1;
     boardgames_grid.push(
-      <Grid item xs={6} md={2}>
+      <Grid key={count} item xs={6} md={2}>
         <Item style={{ minHeight: 260 }}>
-          <a href="./" onClick={setGame(element.name)}>
+          <Link to="/" onClick={() => setGame(element.name)}>
             <img src={element.boardgame_image}></img>
-          </a>
+          </Link>
           <Typography>{element.name}</Typography>
         </Item>
       </Grid>
@@ -64,5 +67,3 @@ function BoardgameSearch() {
     </div>
   );
 }
-
-export default BoardgameSearch;

@@ -8,6 +8,7 @@ import { gameContext } from "./GameContext";
 
 export default function Selectgame() {
   const [game, setGame] = React.useContext(gameContext);
+  console.log("blubi:" + game);
   const handleChange = (event) => {
     setGame(event.target.value);
   };
