@@ -73,9 +73,12 @@ export default function BoardgameSearch() {
       count = count + 1;
       boardgames_grid.push(
         <Grid key={count} item xs={6} md={2}>
-          <Item style={{ minHeight: 260 }}>
+          <Item>
             <Link to="/" onClick={() => setGame(element.name)}>
-              <img src={element.boardgame_image}></img>
+              <img
+                style={{ maxHeight: 140 }}
+                src={element.boardgame_image}
+              ></img>
             </Link>
             <Typography>{element.name}</Typography>
           </Item>
