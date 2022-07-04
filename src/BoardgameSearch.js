@@ -6,37 +6,52 @@ import { Item, classes } from "./DataTable";
 import { brettspiele } from "./DataTable";
 import { gameContext } from "./GameContext";
 import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-import IconButton from "@mui/material";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-const SearchBar = () => (
-  <Autocomplete
-    freeSolo
-    id="boardgame-search"
-    disableClearable
-    options={brettspiele.map((option) => option.name)}
-    renderInput={(params) => (
-      <TextField
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            console.log(e.target.value);
-          }
-        }}
-        {...params}
-        label="Brettspiel Suche"
-        InputProps={{
-          ...params.InputProps,
-          type: "search",
-        }}
-      />
-    )}
-  />
-);
+import { useState } from "react";
 
 export default function BoardgameSearch() {
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+
+  const SearchBar = () => (
+    <Autocomplete
+      freeSolo
+      id="boardgame-search"
+      disableClearable
+      options={brettspiele.map((option) => option.name)}
+      renderInput={(params) => (
+        <TextField
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              {
+                inputHandler(e);
+              }
+            }
+          }}
+          {...params}
+          label="Brettspiel Suche"
+          InputProps={{
+            ...params.InputProps,
+            type: "search",
+          }}
+        />
+      )}
+    />
+  );
+
   const [game, setGame] = React.useContext(gameContext);
+
+  const filterBoardgame = () => {
+    console.log(
+      brettspiele.filter((boardgame) =>
+        boardgame.name.toLowerCase().includes(inputText)
+      )
+    );
+  };
 
   let count = 0;
   let boardgames_grid = [];
@@ -54,12 +69,15 @@ export default function BoardgameSearch() {
     );
   });
 
+  filterBoardgame();
+
   return (
     <div>
       <SearchBar></SearchBar>
       <br />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
+          {inputText}
           {boardgames_grid}
         </Grid>
         <br />
