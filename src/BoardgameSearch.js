@@ -46,28 +46,43 @@ export default function BoardgameSearch() {
   const [game, setGame] = React.useContext(gameContext);
 
   const filterBoardgame = () => {
-    console.log(
-      brettspiele.filter((boardgame) =>
-        boardgame.name.toLowerCase().includes(inputText)
-      )
+    return brettspiele.filter((boardgame) =>
+      boardgame.name.toLowerCase().includes(inputText)
     );
   };
 
   let count = 0;
   let boardgames_grid = [];
-  brettspiele.forEach((element) => {
-    count = count + 1;
-    boardgames_grid.push(
-      <Grid key={count} item xs={6} md={2}>
-        <Item style={{ minHeight: 260 }}>
-          <Link to="/" onClick={() => setGame(element.name)}>
-            <img src={element.boardgame_image}></img>
-          </Link>
-          <Typography>{element.name}</Typography>
-        </Item>
-      </Grid>
-    );
-  });
+
+  if (filterBoardgame().length == 0) {
+    brettspiele.forEach((element) => {
+      count = count + 1;
+      boardgames_grid.push(
+        <Grid key={count} item xs={6} md={2}>
+          <Item style={{ minHeight: 260 }}>
+            <Link to="/" onClick={() => setGame(element.name)}>
+              <img src={element.boardgame_image}></img>
+            </Link>
+            <Typography>{element.name}</Typography>
+          </Item>
+        </Grid>
+      );
+    });
+  } else {
+    filterBoardgame().forEach((element) => {
+      count = count + 1;
+      boardgames_grid.push(
+        <Grid key={count} item xs={6} md={2}>
+          <Item style={{ minHeight: 260 }}>
+            <Link to="/" onClick={() => setGame(element.name)}>
+              <img src={element.boardgame_image}></img>
+            </Link>
+            <Typography>{element.name}</Typography>
+          </Item>
+        </Grid>
+      );
+    });
+  }
 
   filterBoardgame();
 
@@ -77,7 +92,6 @@ export default function BoardgameSearch() {
       <br />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {inputText}
           {boardgames_grid}
         </Grid>
         <br />
