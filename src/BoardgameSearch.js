@@ -74,7 +74,10 @@ export default function BoardgameSearch() {
       boardgames_grid.push(
         <Grid key={count} item xs={6} md={2}>
           <Item>
-            <Link to="/" onClick={() => setGame(element.name)}>
+            <Link
+              to="/passende-kartenhuellen"
+              onClick={() => setGame(element.name)}
+            >
               <img style={{ height: 140 }} src={element.boardgame_image}></img>
             </Link>
             <Typography>{element.name}</Typography>

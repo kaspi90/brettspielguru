@@ -15,6 +15,7 @@ import InstagramBlog from "./InstagramBlog";
 import CreateBoardgame from "./CreateBoardgame";
 import Suche from "./BoardgameSearch";
 import BoardgameSearch from "./BoardgameSearch";
+import Footer from "./Footer";
 
 /*
 CreateBoardgame();
@@ -35,7 +36,7 @@ const theme = createTheme({
   },
 });
 
-const Bundles = () => (
+const Sleeves = () => (
   <div>
     <Selectgame />
     <br />
@@ -52,13 +53,14 @@ function App() {
           <ResponsiveAppBar />
           <Box maxWidth={"80%"} justify="center" m="auto" padding={2}>
             <Routes>
-              <Route path="/" element={<Bundles />} />
-              <Route path="/brettspiel-Suche" element={<BoardgameSearch />} />
+              <Route path="/" element={<BoardgameSearch />} />
+              <Route path="/passende-kartenhuellen" element={<Sleeves />} />
               <Route path="/kartenhuellen" element={<Kartenhüllen />} />
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutz" element={<Datenschutz />} />
               <Route path="/InstagramBlog" element={<InstagramBlog />} />
             </Routes>
+            <Footer />
           </Box>
         </gameContext.Provider>
       </ThemeProvider>

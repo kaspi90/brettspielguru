@@ -7,6 +7,7 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -36,22 +37,30 @@ function InstagramBlog() {
     data = resultArray.data;
   } */
 
-  return (
-    <Box>
-      <Typography variant="h4" align="center">
-        Unser Instagram-Feed:
-      </Typography>
-      <Grid container spacing={2}>
-        {resultArray.map((post) => (
-          <Grid key={post.id} item xs={4}>
-            <Item>
-              <img src={post.media_url}></img>
-              <Typography key={post.id}>{post.caption}</Typography>
-            </Item>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
-  );
+  if (resultArray.length == 0) {
+    return (
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <CircularProgress />
+      </Box>
+    );
+  } else {
+    return (
+      <Box>
+        <Typography variant="h4" align="center">
+          Unser Instagram-Feed:
+        </Typography>
+        <Grid container spacing={2}>
+          {resultArray.map((post) => (
+            <Grid key={post.id} item xs={4}>
+              <Item>
+                <img src={post.media_url}></img>
+                <Typography key={post.id}>{post.caption}</Typography>
+              </Item>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    );
+  }
 }
 export default InstagramBlog;

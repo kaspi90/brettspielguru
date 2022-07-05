@@ -14,12 +14,10 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 
 const pages = [
-  { name: "Bundles", link: "/" },
-  { name: "Brettspiel Suche", link: "brettspiel-Suche" },
+  { name: "Brettspiel Suche", link: "/" },
+  { name: "Sleeves", link: "/passende-kartenhuellen" },
   { name: "Kartenhüllen Größenfinder", link: "Kartenhuellen" },
   { name: "Blog", link: "InstagramBlog" },
-  { name: "Impressum", link: "Impressum" },
-  { name: "Datenschutz", link: "Datenschutz" },
 ];
 
 const useStyles = makeStyles({

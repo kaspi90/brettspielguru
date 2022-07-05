@@ -26,7 +26,7 @@ const PDFViewerBrettspielguru = () => {
 
 function Kartenhüllen() {
   return (
-    <div>
+    <Box>
       <Box sx={{ padding: 5 }}>
         <Typography variant="h5">Kartenhüllen Größenfinder</Typography>
         <br />
@@ -77,12 +77,12 @@ function Kartenhüllen() {
             </ListItem>
           </List>
         </Box>
-        <Box sx={{ maxHeight: 200 }}>
+        <Box>
           <Typography variant="h5">Übersicht</Typography>
           <img src={kartenhuellen_uebersicht} />
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 }
 
