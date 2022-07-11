@@ -12,10 +12,9 @@ import Impressum from "./Impressum.js";
 import Datenschutz from "./Datenschutz.js";
 import { Box, width } from "@mui/system";
 import InstagramBlog from "./InstagramBlog";
-import CreateBoardgame from "./CreateBoardgame";
-import Suche from "./BoardgameSearch";
 import BoardgameSearch from "./BoardgameSearch";
 import Footer from "./Footer";
+import ProductOverview from "./ProductOverview";
 
 /*
 CreateBoardgame();
@@ -56,6 +55,7 @@ function App() {
               <Route path="/" element={<BoardgameSearch />} />
               <Route path="/passende-kartenhuellen" element={<Sleeves />} />
               <Route path="/kartenhuellen" element={<Kartenhüllen />} />
+              <Route path="/produkte" element={<ProductOverview />} />
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutz" element={<Datenschutz />} />
               <Route path="/InstagramBlog" element={<InstagramBlog />} />

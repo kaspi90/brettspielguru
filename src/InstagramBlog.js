@@ -49,16 +49,23 @@ function InstagramBlog() {
         <Typography variant="h4" align="center">
           Unser Instagram-Feed:
         </Typography>
-        <Grid container spacing={2}>
-          {resultArray.map((post) => (
-            <Grid key={post.id} item xs={4}>
-              <Item>
-                <img src={post.media_url}></img>
-                <Typography key={post.id}>{post.caption}</Typography>
-              </Item>
-            </Grid>
-          ))}
-        </Grid>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
+          <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+            {resultArray.map((post) => (
+              <Grid key={post.id} item xs={4} sx={{ minWidth: "350px" }}>
+                <Item>
+                  <img src={post.media_url}></img>
+                  <Typography key={post.id}>{post.caption}</Typography>
+                </Item>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
     );
   }
