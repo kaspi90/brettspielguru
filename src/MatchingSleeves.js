@@ -4,12 +4,12 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { Item, classes } from "./DataTable";
 import { gameContext } from "./GameContext";
-import { brettspiele } from "./DataTable";
 import axios from "axios";
 import xml2json from "@hendt/xml2json";
 import { Typography } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import { boardgameRef } from "./firebase";
+import { async } from "@firebase/util";
 
 function MatchingSleeves() {
   const [boardgameDescription, setBoardgameDescription] = React.useState("");
@@ -50,10 +50,14 @@ function MatchingSleeves() {
     }
   });
 
-  var count = Object.keys(foundBoardgame.image).length;
-  console.log(foundBoardgame.amazonlink);
+  async function findingBoardgame() {}
 
-  getBoardgameDescription(foundBoardgame.boardgamegeekId);
+  let count;
+  if (foundBoardgame) {
+    count = Object.keys(foundBoardgame.image).length;
+
+    getBoardgameDescription(foundBoardgame.boardgamegeekId);
+  }
 
   let sleeves = [];
   for (var i = 1; i <= count; i++) {
