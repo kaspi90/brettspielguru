@@ -57,6 +57,7 @@ export default function BoardgameSearch() {
   if (filterBoardgame().length == 0) {
     brettspiele.forEach((element) => {
       count = count + 1;
+
       boardgames_grid.push(
         <Grid key={count} item xs={6} md={2}>
           <Item style={{ minHeight: 260 }}>

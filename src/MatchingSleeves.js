@@ -10,9 +10,12 @@ import { Typography } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import { boardgameRef } from "./firebase";
 import { async } from "@firebase/util";
+import { useEffect } from "react";
 
 function MatchingSleeves() {
   const [boardgameDescription, setBoardgameDescription] = React.useState("");
+  const [brettspieleFirebase, setbrettspieleFirebase] = React.useState([]);
+
   let boardgameJSON;
 
   const getBoardgameDescription = (boardgamegeekId1) => {
@@ -28,18 +31,19 @@ function MatchingSleeves() {
   };
 
   const ref = boardgameRef.child("-N5o9dAJ0L5CZTzOWOKI");
-  let brettspieleFirebase = [];
 
-  ref.on(
-    "value",
-    (snapshot) => {
-      console.log(snapshot.val());
-      brettspieleFirebase = snapshot.val();
-    },
-    (errorObject) => {
-      console.log("The read failed: " + errorObject.name);
-    }
-  );
+  useEffect(() => {
+    ref.on(
+      "value",
+      (snapshot) => {
+        console.log(snapshot.val());
+        setbrettspieleFirebase(snapshot.val());
+      },
+      (errorObject) => {
+        console.log("The read failed: " + errorObject.name);
+      }
+    );
+  });
 
   const [game] = React.useContext(gameContext);
   if (!game) return <></>;

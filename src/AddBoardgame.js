@@ -19,6 +19,8 @@ import Standard73x122 from "./img/73x122mm_Standard.jpg";
 import Standard82x122 from "./img/82x122mm_Standard.jpg";
 import Standard59x90 from "./img/59x90mm_Standard.jpg";
 import Standard66x91 from "./img/66x91mm_Standard.jpg";
+import { boardgameRef } from "./firebase";
+import Brettspiel from "./Brettspiel";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -54,6 +56,24 @@ const names = [
 
 function AddBoardgame() {
   const [sleeves, setSleeves] = React.useState([]);
+  const [boardgameName, setBoardgameName] = React.useState();
+  const [boardgameGeekId, setboardgameGeekId] = React.useState();
+  const [boardgameImage, setboardgameImage] = React.useState();
+  const [sleeveCounter, setsleeveCounter] = React.useState();
+
+  const handleClick = (e) => {
+    let newBoardgame = Brettspiel(
+      boardgameName,
+      "kartenhuellen",
+      "bild",
+      "link",
+      boardgameGeekId,
+      "bild2"
+    );
+    e.preventDefault();
+    boardgameRef.push(newBoardgame);
+    console.log("The link was clicked.");
+  };
 
   const handleChange = (event) => {
     const {
@@ -62,39 +82,51 @@ function AddBoardgame() {
     setSleeves(typeof value === "string" ? value.split(",") : value);
   };
 
+  const handleChangeBoardgameName = (event) => {
+    setBoardgameName(event.target.value);
+    console.log("Brettspielname " + boardgameName);
+  };
+
+  const handleChangeSleeveCounter = (event) => {
+    setsleeveCounter(event.target.value);
+    console.log("Sleevecounter " + sleeveCounter);
+  };
+
+  const handleboardgameImage = (event) => {
+    setboardgameImage(event.target.value);
+    console.log("handleboardgameImage " + boardgameImage);
+  };
+
+  const handleChangeboardgameGeekId = (event) => {
+    setboardgameGeekId(event.target.value);
+    console.log("Boardgamegeek Id " + boardgameGeekId);
+  };
+
   console.log(sleeves);
   const [matchingSleeves, setMatchingSleeves] = React.useState([]);
-  let counter = 1;
   let count = 0;
 
   function RenderElement(props) {
     return images.map((element) => {
       if (element.name == props.currentSleeve) {
-        console.log("c" + element.image);
         return (
-          <Box>
+          <Box key={props.currentSleeve}>
             <img src={element.image} />
 
             {props.currentSleeve}
-            <TextField id="outlined-basic" label="Anzahl" variant="outlined" />
+            <TextField
+              id="outlined-basic"
+              label="Anzahl"
+              variant="outlined"
+              onChange={handleChangeSleeveCounter}
+              value={sleeveCounter}
+            />
           </Box>
         );
       } else {
         return <></>;
       }
     });
-    /*
-    images.map((element) => {
-
-      if (element.name == currentSleeve) {
-        console.log("a" + currentSleeve);
-        console.log("b" + element.name);
-        console.log("c" + element.image);
-        return element.image;
-      } else {
-        console.log("blbuber");
-      }
-    }); */
   }
 
   return (
@@ -105,35 +137,46 @@ function AddBoardgame() {
       <Box mb={2}>
         <TextField
           fullWidth
-          id="outlined-basic"
+          id="boardgame_name"
           label="Brettspiel Name"
           variant="outlined"
+          value={boardgameName}
+          onChange={handleChangeBoardgameName}
         />
       </Box>
       <Box mb={2}>
-        <Button variant="contained" component="label">
-          Brettspiel Bild hochladen
-          <input type="file" hidden />
-        </Button>
+        <input
+          accept="image/*"
+          style={{ display: "none" }}
+          id="raised-button-file"
+          multiple
+          type="file"
+          onChange={handleboardgameImage}
+        />
+        <label htmlFor="raised-button-file">
+          <Button variant="contained" component="span">
+            Brettspiel Bild-Upload
+          </Button>
+        </label>
       </Box>
       <Box mb={2}>
         <TextField
           fullWidth
           mb={2}
-          id="outlined-basic"
+          id="boardgamegeek_id"
           label="Boardgamegeek ID"
           variant="outlined"
+          value={boardgameGeekId}
+          onChange={handleChangeboardgameGeekId}
         />
       </Box>
       <Box mb={2}>
         {" "}
         <FormControl fullWidth>
-          <InputLabel id="demo-multiple-checkbox-label">
-            Kartenhüllen
-          </InputLabel>
+          <InputLabel id="Sleeves">Kartenhüllen</InputLabel>
           <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
+            labelId="Sleeves"
+            id="Sleeves"
             multiple
             value={sleeves}
             onChange={handleChange}
@@ -155,8 +198,8 @@ function AddBoardgame() {
           count = count + 1;
           return (
             <Grid sx={{ flexGrow: 1 }} key={count} item xs={6} md={2}>
-              <Item>
-                <RenderElement currentSleeve={sleeve} />
+              <Item key={count}>
+                <RenderElement key={count} currentSleeve={sleeve} />
               </Item>
             </Grid>
           );
@@ -164,7 +207,9 @@ function AddBoardgame() {
       </Box>
       <Box mb={2} sx={{ display: "flex", gap: "20px" }}>
         <Box>
-          <Button variant="contained">Hinzufügen</Button>
+          <Button onClick={handleClick} variant="contained">
+            Hinzufügen
+          </Button>
         </Box>
         <Box>
           <Button variant="contained">Abbrechen</Button>
