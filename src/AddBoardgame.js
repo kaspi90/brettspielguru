@@ -21,6 +21,11 @@ import Standard59x90 from "./img/59x90mm_Standard.jpg";
 import Standard66x91 from "./img/66x91mm_Standard.jpg";
 import { boardgameRef } from "./firebase";
 import Brettspiel from "./Brettspiel";
+import { useState } from "react";
+import { storage } from "./firebase";
+import { useEffect } from "react";
+
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -59,8 +64,13 @@ function AddBoardgame() {
   const [boardgameName, setBoardgameName] = React.useState();
   const [boardgameGeekId, setboardgameGeekId] = React.useState();
   const [boardgameImage, setboardgameImage] = React.useState();
-  const [sleeveCounter, setsleeveCounter] = React.useState();
+  const [file, setFile] = useState("");
+  const [percent, setPercent] = useState(0);
+  const storageRef = storage.child("/images/" + file.name);
+  const [inputFields, setInputFields] = useState([{ name: "", counter: "" }]);
 
+  const uploadTask = uploadBytesResumable(storageRef, file);
+  console.log("felder" + inputFields);
   const handleClick = (e) => {
     let newBoardgame = Brettspiel(
       boardgameName,
@@ -75,6 +85,34 @@ function AddBoardgame() {
     console.log("The link was clicked.");
   };
 
+  function handleChangeImage(event) {
+    setFile(event.target.files[0]);
+    const storageRef = storage.child("/images/" + file.name);
+  }
+
+  useEffect(() => {
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+
+        // update progress
+        setPercent(percent);
+      },
+      (err) => console.log(err),
+      () => {
+        // download url
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          console.log(url);
+        });
+      }
+    );
+  }, [file]);
+
+  function handleUpload() {}
+
   const handleChange = (event) => {
     const {
       target: { value },
@@ -82,15 +120,23 @@ function AddBoardgame() {
     setSleeves(typeof value === "string" ? value.split(",") : value);
   };
 
+  const handleFormChange = (index, event) => {
+    let data = [...inputFields];
+    data[index][event.target.name] = event.target.value;
+    setInputFields(data);
+    console.log("felder2" + inputFields);
+  };
   const handleChangeBoardgameName = (event) => {
     setBoardgameName(event.target.value);
     console.log("Brettspielname " + boardgameName);
   };
 
+  /*
   const handleChangeSleeveCounter = (event) => {
-    setsleeveCounter(event.target.value);
+    setsleeveCounter({ [event.target.name]: event.target.value });
+
     console.log("Sleevecounter " + sleeveCounter);
-  };
+  }; */
 
   const handleboardgameImage = (event) => {
     setboardgameImage(event.target.value);
@@ -110,7 +156,7 @@ function AddBoardgame() {
     return images.map((element) => {
       if (element.name == props.currentSleeve) {
         return (
-          <Box key={props.currentSleeve}>
+          <Box key={props.currentSleeve.toString()}>
             <img src={element.image} />
 
             {props.currentSleeve}
@@ -118,8 +164,8 @@ function AddBoardgame() {
               id="outlined-basic"
               label="Anzahl"
               variant="outlined"
-              onChange={handleChangeSleeveCounter}
-              value={sleeveCounter}
+              onChange={(event) => handleFormChange(props.currentSleeve, event)}
+              value={((inputs) => inputs.name == props.currentSleeve).counter}
             />
           </Box>
         );
@@ -151,13 +197,14 @@ function AddBoardgame() {
           id="raised-button-file"
           multiple
           type="file"
-          onChange={handleboardgameImage}
+          onChange={handleChangeImage}
         />
         <label htmlFor="raised-button-file">
-          <Button variant="contained" component="span">
+          <Button onClick={handleUpload} variant="contained" component="span">
             Brettspiel Bild-Upload
           </Button>
         </label>
+        <p>{percent} "% done"</p>
       </Box>
       <Box mb={2}>
         <TextField
@@ -196,10 +243,11 @@ function AddBoardgame() {
       <Box mb={2} sx={{ display: "flex", gap: "20px" }}>
         {sleeves.map((sleeve) => {
           count = count + 1;
+
           return (
-            <Grid sx={{ flexGrow: 1 }} key={count} item xs={6} md={2}>
-              <Item key={count}>
-                <RenderElement key={count} currentSleeve={sleeve} />
+            <Grid sx={{ flexGrow: 1 }} key={sleeve} item xs={6} md={2}>
+              <Item key={sleeve + "b"}>
+                <RenderElement currentSleeve={sleeve} />
               </Item>
             </Grid>
           );
