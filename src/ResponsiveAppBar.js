@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import LoginIcon from "@mui/icons-material/Login";
+import Login from "./Login";
 
 const pages = [
   { name: "Brettspiel Suche", link: "/" },
@@ -146,9 +147,11 @@ const ResponsiveAppBar = () => {
               ))}
             </Box>
             <Box>
-              <IconButton aria-label="delete" sx={{ color: "white" }}>
-                <LoginIcon />
-              </IconButton>
+              <Link to="/login">
+                <IconButton aria-label="delete" sx={{ color: "white" }}>
+                  <LoginIcon />
+                </IconButton>
+              </Link>
             </Box>
           </Toolbar>
         </Box>

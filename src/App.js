@@ -16,6 +16,7 @@ import BoardgameSearch from "./BoardgameSearch";
 import Footer from "./Footer";
 import ProductOverview from "./ProductOverview";
 import AddBoardgame from "./AddBoardgame";
+import Login from "./Login";
 
 /*
 CreateBoardgame();
@@ -61,6 +62,7 @@ function App() {
               <Route path="/datenschutz" element={<Datenschutz />} />
               <Route path="/InstagramBlog" element={<InstagramBlog />} />
               <Route path="/hinzufuegen" element={<AddBoardgame />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
             <Footer />
           </Box>
