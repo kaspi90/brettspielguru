@@ -24,6 +24,7 @@ import Brettspiel from "./Brettspiel";
 import { useState } from "react";
 import { storage } from "./firebase";
 import { useEffect } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
@@ -59,7 +60,20 @@ const names = [
   "Standard66x91",
 ];
 
+const auth = getAuth();
+
 function AddBoardgame() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    // ...
+  } else {
+    // No user is signed in.
+  }
+
   const [sleeves, setSleeves] = React.useState([]);
   const [boardgameName, setBoardgameName] = React.useState();
   const [boardgameGeekId, setboardgameGeekId] = React.useState();
