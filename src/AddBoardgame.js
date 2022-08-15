@@ -64,13 +64,13 @@ const auth = getAuth();
 
 function AddBoardgame() {
   const [sleeves, setSleeves] = React.useState([]);
-  const [boardgameName, setBoardgameName] = React.useState();
-  const [boardgameGeekId, setboardgameGeekId] = React.useState();
-  const [boardgameImage, setboardgameImage] = React.useState();
+  const [boardgameName, setBoardgameName] = React.useState("");
+  const [boardgameGeekId, setboardgameGeekId] = React.useState("");
+  const [boardgameImage, setboardgameImage] = React.useState(); // file
   const [file, setFile] = useState("");
   const [percent, setPercent] = useState(0);
   const storageRef = storage.child("/images/" + file.name);
-  const [inputFields, setInputFields] = useState([{ name: "", counter: "" }]);
+  const [inputFields, setInputFields] = useState([]);
 
   const uploadTask = uploadBytesResumable(storageRef, file);
   console.log("felder" + inputFields);
@@ -120,14 +120,33 @@ function AddBoardgame() {
     const {
       target: { value },
     } = event;
-    setSleeves(typeof value === "string" ? value.split(",") : value);
+    const newSleeves = typeof value === "string" ? value.split(",") : value;
+    setSleeves(newSleeves);
+    console.log(newSleeves);
+    setInputFields((fields) =>
+      newSleeves.map((sleeve) => {
+        const field = fields.find((field) => field.sleeve === sleeve);
+        if (field) {
+          return field;
+        }
+        return {
+          sleeve,
+          value: "",
+        };
+      })
+    );
   };
 
   const handleFormChange = (index, event) => {
-    let data = [...inputFields];
-    data[index][event.target.name] = event.target.value;
-    setInputFields(data);
-    console.log("felder2" + inputFields);
+    console.log(index);
+    console.log(event.target.value);
+    console.log(inputFields);
+    // data[index] = event.target.value;
+    setInputFields((fields) =>
+      fields.map((field) =>
+        field.sleeve === index ? { ...field, value: event.target.value } : field
+      )
+    );
   };
   const handleChangeBoardgameName = (event) => {
     setBoardgameName(event.target.value);
@@ -156,24 +175,26 @@ function AddBoardgame() {
   let count = 0;
 
   function RenderElement(props) {
-    return images.map((element) => {
-      if (element.name == props.currentSleeve) {
+    return images.map((element, i) => {
+      if (element.name === props.currentSleeve) {
         return (
-          <Box key={props.currentSleeve.toString()}>
+          <Box key={props.currentSleeve}>
             <img src={element.image} />
 
             {props.currentSleeve}
             <TextField
-              id="outlined-basic"
               label="Anzahl"
               variant="outlined"
               onChange={(event) => handleFormChange(props.currentSleeve, event)}
-              value={((inputs) => inputs.name == props.currentSleeve).counter}
+              value={
+                inputFields.find((val) => val.sleeve === props.currentSleeve)
+                  .value
+              }
             />
           </Box>
         );
       } else {
-        return <></>;
+        return <div key={element.name}></div>;
       }
     });
   }
