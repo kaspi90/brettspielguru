@@ -157,7 +157,7 @@ function AddBoardgame() {
 
   function RenderElement(props) {
     return images.map((element) => {
-      if (element.name == props.currentSleeve) {
+      if (element.name === props.currentSleeve) {
         return (
           <Box key={props.currentSleeve.toString()}>
             <img src={element.image} />
@@ -173,7 +173,7 @@ function AddBoardgame() {
           </Box>
         );
       } else {
-        return <></>;
+        return null;
       }
     });
   }
