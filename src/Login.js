@@ -1,10 +1,11 @@
 import { Box } from "@mui/system";
 import { TextField, Button } from "@mui/material";
 import { firebase } from "./firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Logout } from "@mui/icons-material";
 
 const auth = getAuth();
 
@@ -47,6 +48,17 @@ function Login() {
     console.log("The link was clicked.");
   };
 
+  const handleClickOut = (e) => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log("raus");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <Box
       sx={{
@@ -85,6 +97,9 @@ function Login() {
         <Box mb={2} sx={{ width: 400, display: "flex" }}>
           <Button onClick={handleClick} variant="contained">
             Login
+          </Button>
+          <Button onClick={handleClickOut} variant="contained">
+            Logout
           </Button>
         </Box>
       </Box>

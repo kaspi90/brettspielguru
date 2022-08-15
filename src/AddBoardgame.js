@@ -63,17 +63,6 @@ const names = [
 const auth = getAuth();
 
 function AddBoardgame() {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    // ...
-  } else {
-    // No user is signed in.
-  }
-
   const [sleeves, setSleeves] = React.useState([]);
   const [boardgameName, setBoardgameName] = React.useState();
   const [boardgameGeekId, setboardgameGeekId] = React.useState();
