@@ -19,14 +19,14 @@ import Standard73x122 from "./img/73x122mm_Standard.jpg";
 import Standard82x122 from "./img/82x122mm_Standard.jpg";
 import Standard59x90 from "./img/59x90mm_Standard.jpg";
 import Standard66x91 from "./img/66x91mm_Standard.jpg";
-import { boardgameRef } from "./firebase";
+import { gamesRef } from "./firebase";
 import Brettspiel from "./Brettspiel";
 import { useState } from "react";
 import { storage } from "./firebase";
 import { useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -40,13 +40,41 @@ const MenuProps = {
 };
 
 const images = [
-  { image: Standard44x66, name: "Standard44x66" },
-  { image: Standard47x70, name: "Standard47x70" },
-  { image: Standard59x90, name: "Standard59x90" },
-  { image: Standard66x91, name: "Standard66x91" },
-  { image: Standard67x103, name: "Standard67x103" },
-  { image: Standard73x122, name: "Standard73x122" },
-  { image: Standard82x122, name: "Standard82x122" },
+  {
+    image: Standard44x66,
+    name: "Standard44x66",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XN3CC/",
+  },
+  {
+    image: Standard47x70,
+    name: "Standard47x70",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XN3CC/",
+  },
+  {
+    image: Standard59x90,
+    name: "Standard59x90",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943WNT26/?th=1",
+  },
+  {
+    image: Standard66x91,
+    name: "Standard66x91",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XC75P/?th=1",
+  },
+  {
+    image: Standard67x103,
+    name: "Standard67x103",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XT8K2/?th=1",
+  },
+  {
+    image: Standard73x122,
+    name: "Standard73x122",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943YFXML/?th=1",
+  },
+  {
+    image: Standard82x122,
+    name: "Standard82x122",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943Z8S82/?th=1",
+  },
 ];
 
 const names = [
@@ -67,24 +95,27 @@ function AddBoardgame() {
   const [boardgameName, setBoardgameName] = React.useState("");
   const [boardgameGeekId, setboardgameGeekId] = React.useState("");
   const [boardgameImage, setboardgameImage] = React.useState(); // file
+  const [sleeveAll, setSleeveAll] = React.useState(); // file
+
   const [file, setFile] = useState("");
   const [percent, setPercent] = useState(0);
   const storageRef = storage.child("/images/" + file.name);
   const [inputFields, setInputFields] = useState([]);
+  const [imageUrl, setImageUrl] = useState("");
 
   const uploadTask = uploadBytesResumable(storageRef, file);
   console.log("felder" + inputFields);
   const handleClick = (e) => {
     let newBoardgame = Brettspiel(
       boardgameName,
-      "kartenhuellen",
-      "bild",
+      sleeveAll,
+      imageUrl,
       "link",
       boardgameGeekId,
       "bild2"
     );
     e.preventDefault();
-    boardgameRef.push(newBoardgame);
+    gamesRef.push(newBoardgame);
     console.log("The link was clicked.");
   };
 
@@ -108,7 +139,7 @@ function AddBoardgame() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+          setImageUrl(url);
         });
       }
     );
@@ -122,7 +153,8 @@ function AddBoardgame() {
     } = event;
     const newSleeves = typeof value === "string" ? value.split(",") : value;
     setSleeves(newSleeves);
-    console.log(newSleeves);
+
+    console.log("newsleeve" + newSleeves);
     setInputFields((fields) =>
       newSleeves.map((sleeve) => {
         const field = fields.find((field) => field.sleeve === sleeve);
@@ -135,13 +167,66 @@ function AddBoardgame() {
         };
       })
     );
+
+    /*
+    let blubi = [];
+    images.forEach((element) => {
+      for (let index = 0; index < newSleeves.length; index++) {
+        if (newSleeves[index] === element.name) {
+          blubi.push(element.image);
+          setSleeveImages(blubi);
+        }
+      }
+    });
+ */
+    /*
+    let zipped = images.map((x, i) => {
+      if (newSleeves[i] === x.name) {
+        console.log("bluberererer");
+      }
+    });
+    console.log("zippied" + zipped);
+
+    /* const result = newSleeves.map(
+      (sleeveObject) =>
+        sleeveObject === images.map((imageObject) => imageObject.name)
+    ); */
+
+    //console.log("result" + result);
   };
 
+  let resulti = [];
+
+  useEffect(() => {
+    inputFields.forEach((element) => {
+      for (let index = 0; index < images.length; index++) {
+        if (images[index].name === element.sleeve) {
+          resulti.push({
+            name: element.sleeve,
+            image: images[index].image,
+            feld: element.value,
+            link: images[index].link,
+          });
+        }
+      }
+    });
+
+    /*
+
+    const result = inputFields.map((kartenhuelle) => {
+      for (let index = 0; index < images.length; index++) {
+        if (images[index].name === kartenhuelle.sleeve) {
+          kartenhuelle.push(images[index].image);
+          return kartenhuelle;
+        }
+      } 
+    });*/
+    console.log("result" + resulti);
+
+    setSleeveAll(resulti);
+  }, [inputFields]);
+
   const handleFormChange = (index, event) => {
-    console.log(index);
-    console.log(event.target.value);
-    console.log(inputFields);
-    // data[index] = event.target.value;
     setInputFields((fields) =>
       fields.map((field) =>
         field.sleeve === index ? { ...field, value: event.target.value } : field
@@ -150,7 +235,6 @@ function AddBoardgame() {
   };
   const handleChangeBoardgameName = (event) => {
     setBoardgameName(event.target.value);
-    console.log("Brettspielname " + boardgameName);
   };
 
   /*
@@ -162,15 +246,14 @@ function AddBoardgame() {
 
   const handleboardgameImage = (event) => {
     setboardgameImage(event.target.value);
-    console.log("handleboardgameImage " + boardgameImage);
   };
 
   const handleChangeboardgameGeekId = (event) => {
     setboardgameGeekId(event.target.value);
-    console.log("Boardgamegeek Id " + boardgameGeekId);
   };
 
   console.log(sleeves);
+
   const [matchingSleeves, setMatchingSleeves] = React.useState([]);
   let count = 0;
 

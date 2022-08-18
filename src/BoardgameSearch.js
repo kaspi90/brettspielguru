@@ -8,14 +8,35 @@ import { gameContext } from "./GameContext";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { boardgameRef, gamesRef } from "./firebase";
 
 export default function BoardgameSearch() {
   const [inputText, setInputText] = useState("");
+  const [games, setGames] = useState([]);
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
+
+  console.log("boardgameref" + boardgameRef);
+
+  // Attach an asynchronous callback to read the data at our posts reference
+  useEffect(() => {
+    gamesRef.on(
+      "value",
+      (snapshot) => {
+        console.log("huhu" + snapshot.val());
+
+        const data = Object.values(JSON.parse(JSON.stringify(snapshot.val())));
+        console.log(data);
+        setGames(data);
+      },
+      (errorObject) => {
+        console.log("The read failed: " + errorObject.name);
+      }
+    );
+  }, []);
 
   const SearchBar = () => (
     <Autocomplete

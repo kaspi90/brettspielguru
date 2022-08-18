@@ -98,9 +98,6 @@ function Login() {
           <Button onClick={handleClick} variant="contained">
             Login
           </Button>
-          <Button onClick={handleClickOut} variant="contained">
-            Logout
-          </Button>
         </Box>
       </Box>
     </Box>

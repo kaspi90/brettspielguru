@@ -37,5 +37,6 @@ firebase.initializeApp(firebaseConfig);
 const databaseRef = firebase.database().ref();
 export const storage = firebase.storage().ref();
 export const boardgameRef = databaseRef.child("boardgame");
+export const gamesRef = databaseRef.child("games");
 
 export default { firebase };

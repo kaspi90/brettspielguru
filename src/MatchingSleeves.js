@@ -9,7 +9,6 @@ import xml2json from "@hendt/xml2json";
 import { Typography } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 import { boardgameRef } from "./firebase";
-import { async } from "@firebase/util";
 import { useEffect } from "react";
 
 function MatchingSleeves() {
@@ -43,7 +42,7 @@ function MatchingSleeves() {
         console.log("The read failed: " + errorObject.name);
       }
     );
-  });
+  }, []);
 
   const [game] = React.useContext(gameContext);
   if (!game) return <></>;
