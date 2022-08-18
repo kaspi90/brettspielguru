@@ -26,7 +26,6 @@ import viticulture_img from "./img/viticulture.webp";
 import time_stories_img from "./img/time_stories.webp";
 import wizard_img from "./img/wizard.webp";
 import sevenwonders_img from "./img/7wonders.webp";
-
 import { makeStyles } from "@mui/styles";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
