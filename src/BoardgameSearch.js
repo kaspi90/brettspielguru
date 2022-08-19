@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import * as React from "react";
-import { Item, classes } from "./DataTable";
+import { Item } from "./DataTable";
 import { brettspiele } from "./DataTable";
 import { gameContext } from "./GameContext";
 import TextField from "@mui/material/TextField";
@@ -43,7 +43,7 @@ export default function BoardgameSearch() {
       freeSolo
       id="boardgame-search"
       disableClearable
-      options={brettspiele.map((option) => option.name)}
+      options={games.map((option) => option.name)}
       renderInput={(params) => (
         <TextField
           onKeyPress={(e) => {
@@ -67,7 +67,7 @@ export default function BoardgameSearch() {
   const [game, setGame] = React.useContext(gameContext);
 
   const filterBoardgame = () => {
-    return brettspiele.filter((boardgame) =>
+    return games.filter((boardgame) =>
       boardgame.name.toLowerCase().includes(inputText)
     );
   };
@@ -76,14 +76,14 @@ export default function BoardgameSearch() {
   let boardgames_grid = [];
 
   if (filterBoardgame().length == 0) {
-    brettspiele.forEach((element) => {
+    games.forEach((element) => {
       count = count + 1;
 
       boardgames_grid.push(
         <Grid key={count} item xs={6} md={2}>
           <Item style={{ minHeight: 260 }}>
             <Link to="/" onClick={() => setGame(element.name)}>
-              <img src={element.boardgame_image}></img>
+              <img src={element.image}></img>
             </Link>
             <Typography>{element.name}</Typography>
           </Item>
@@ -100,7 +100,7 @@ export default function BoardgameSearch() {
               to="/passende-kartenhuellen"
               onClick={() => setGame(element.name)}
             >
-              <img style={{ height: 140 }} src={element.boardgame_image}></img>
+              <img style={{ height: 140 }} src={element.image}></img>
             </Link>
             <Typography>{element.name}</Typography>
           </Item>

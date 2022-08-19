@@ -8,8 +8,9 @@ import axios from "axios";
 import xml2json from "@hendt/xml2json";
 import { Typography } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
-import { boardgameRef } from "./firebase";
+import { boardgameRef, gamesRef } from "./firebase";
 import { useEffect } from "react";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 function MatchingSleeves() {
   const [boardgameDescription, setBoardgameDescription] = React.useState("");
@@ -29,14 +30,17 @@ function MatchingSleeves() {
       });
   };
 
-  const ref = boardgameRef.child("-N5o9dAJ0L5CZTzOWOKI");
+  const ref = gamesRef;
 
   useEffect(() => {
     ref.on(
       "value",
       (snapshot) => {
-        console.log(snapshot.val());
-        setbrettspieleFirebase(snapshot.val());
+        console.log(Object.values(JSON.parse(JSON.stringify(snapshot.val()))));
+
+        setbrettspieleFirebase(
+          Object.values(JSON.parse(JSON.stringify(snapshot.val())))
+        );
       },
       (errorObject) => {
         console.log("The read failed: " + errorObject.name);
@@ -49,6 +53,7 @@ function MatchingSleeves() {
 
   const foundBoardgame = brettspieleFirebase.find((item) => {
     if (item.name == game) {
+      console.log(item);
       return item;
     }
   });
@@ -57,27 +62,32 @@ function MatchingSleeves() {
 
   let count;
   if (foundBoardgame) {
-    count = Object.keys(foundBoardgame.image).length;
+    console.log("foundboardgame" + foundBoardgame);
+    count = foundBoardgame.kartenhuellen.length;
+    console.log("count" + count);
 
     getBoardgameDescription(foundBoardgame.boardgamegeekId);
+    console.log(foundBoardgame.boardgamegeekId);
   }
 
   let sleeves = [];
-  for (var i = 1; i <= count; i++) {
+  for (var i = 0; i < count; i++) {
+    console.log("hier" + foundBoardgame.kartenhuellen[i].image);
+
     sleeves.push(
       <Grid key={"grid" + i} item xs={6} md={2}>
         <Item>
           <img
-            src={foundBoardgame.image["Produktbild" + i]}
+            src={foundBoardgame.kartenhuellen[i].image}
             alt="Siedler von Catan Logo"
             className={classes.ImgSleeves}
           />
           <Typography>
-            Benötigte Anzahl: {foundBoardgame.kartenhuellen["Menge" + i]} <br />
+            Benötigte Anzahl: {foundBoardgame.kartenhuellen[i].feld} <br />
           </Typography>
           <Button
             variant="contained"
-            href={foundBoardgame.amazonlink["amazonlink" + i]}
+            href={foundBoardgame.kartenhuellen[i].link}
           >
             Bei Amazon bestellen
           </Button>

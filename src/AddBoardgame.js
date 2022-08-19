@@ -19,6 +19,8 @@ import Standard73x122 from "./img/73x122mm_Standard.jpg";
 import Standard82x122 from "./img/82x122mm_Standard.jpg";
 import Standard59x90 from "./img/59x90mm_Standard.jpg";
 import Standard66x91 from "./img/66x91mm_Standard.jpg";
+import Standard56x82 from "./img/56x82mm_Standard.jpg";
+
 import { gamesRef } from "./firebase";
 import Brettspiel from "./Brettspiel";
 import { useState } from "react";
@@ -74,6 +76,11 @@ const images = [
     image: Standard82x122,
     name: "Standard82x122",
     link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943Z8S82/?th=1",
+  },
+  {
+    image: Standard56x82,
+    name: "Standard56x82",
+    link: "https://www.amazon.de/Sleeves-Kartenh%C3%BCllen-Kartenfolien-Zipper-Bag-Transparent/dp/B0943XNXY4/ref=sr_1_5?keywords=brettspielguru%2Bsleeves&qid=1660945753",
   },
 ];
 
