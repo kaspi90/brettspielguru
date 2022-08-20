@@ -3,13 +3,12 @@ import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import * as React from "react";
 import { Item } from "./DataTable";
-import { brettspiele } from "./DataTable";
 import { gameContext } from "./GameContext";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { boardgameRef, gamesRef } from "./firebase";
+import { gamesRef } from "./Firebase";
 
 export default function BoardgameSearch() {
   const [inputText, setInputText] = useState("");

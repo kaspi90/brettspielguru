@@ -1,6 +1,5 @@
-import { Divider, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { Container } from "@mui/material";
 import Brettspielguru1 from "./img/brettspielguru_sleeves1.jpg";
 import Brettspielguru2 from "./img/brettspielguru_sleeves2.jpg";
 import Brettspielguru3 from "./img/brettspielguru_sleeves3.jpg";

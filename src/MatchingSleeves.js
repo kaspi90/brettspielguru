@@ -8,9 +8,8 @@ import axios from "axios";
 import xml2json from "@hendt/xml2json";
 import { Typography } from "@mui/material";
 import ReactReadMoreReadLess from "react-read-more-read-less";
-import { boardgameRef, gamesRef } from "./firebase";
+import { gamesRef } from "./Firebase";
 import { useEffect } from "react";
-import { ConstructionOutlined } from "@mui/icons-material";
 
 function MatchingSleeves() {
   const [boardgameDescription, setBoardgameDescription] = React.useState("");

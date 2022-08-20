@@ -21,10 +21,10 @@ import Standard59x90 from "./img/59x90mm_Standard.jpg";
 import Standard66x91 from "./img/66x91mm_Standard.jpg";
 import Standard56x82 from "./img/56x82mm_Standard.jpg";
 
-import { gamesRef } from "./firebase";
-import Brettspiel from "./Brettspiel";
+import { gamesRef } from "./Firebase";
+import Brettspiel from "./Boardgame";
 import { useState } from "react";
-import { storage } from "./firebase";
+import { storage } from "./Firebase";
 import { useEffect } from "react";
 import { getAuth } from "firebase/auth";
 

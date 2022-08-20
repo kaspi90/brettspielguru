@@ -3,13 +3,12 @@ import React from "react";
 import ResponsiveAppBar from "./ResponsiveAppBar";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
-import Selectgame from "./Selectgame";
 import DataTable from "./DataTable";
-import Kartenhüllen from "./Kartenhüllen";
+import Kartenhüllen from "./Sleeves";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { gameContext } from "./GameContext";
-import Impressum from "./Impressum.js";
-import Datenschutz from "./Datenschutz.js";
+import Impressum from "./Imprint.js";
+import Datenschutz from "./PrivacyProtection.js";
 import { Box, width } from "@mui/system";
 import InstagramBlog from "./InstagramBlog";
 import BoardgameSearch from "./BoardgameSearch";
@@ -37,7 +36,6 @@ const theme = createTheme({
 
 const Sleeves = () => (
   <div>
-    <Selectgame />
     <br />
     <DataTable />
   </div>

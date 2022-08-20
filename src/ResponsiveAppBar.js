@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import LoginIcon from "@mui/icons-material/Login";
-import Login from "./Login";
 
 const pages = [
   { name: "Brettspiel Suche", link: "/" },
@@ -28,14 +27,6 @@ const useStyles = makeStyles({
     padding: 5,
   },
 });
-
-let counter = 1;
-
-var scores = [
-  [2, 7],
-  [13, 47],
-  [55, 77],
-];
 
 const ResponsiveAppBar = () => {
   const classes = useStyles();
