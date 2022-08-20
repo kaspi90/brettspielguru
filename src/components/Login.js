@@ -1,11 +1,8 @@
 import { Box } from "@mui/system";
 import { TextField, Button } from "@mui/material";
-import { firebase } from "./Firebase";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import React from "react";
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Logout } from "@mui/icons-material";
 
 const auth = getAuth();
 
