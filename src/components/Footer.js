@@ -5,7 +5,6 @@ import { Typography } from "@mui/material";
 
 const linkStyle = {
   margin: "0.5rem",
-
   textDecoration: "none",
   color: "black",
 };

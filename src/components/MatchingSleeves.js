@@ -49,12 +49,11 @@ function MatchingSleeves() {
   if (!game) return <></>;
 
   const foundBoardgame = brettspieleFirebase.find((item) => {
-    if (item.name == game) {
+    if (item.name === game) {
       return item;
-    }
+    } else return null;
   });
 
-  async function findingBoardgame() {}
 
   let count;
   if (foundBoardgame) {

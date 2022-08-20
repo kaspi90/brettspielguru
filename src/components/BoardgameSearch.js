@@ -13,6 +13,8 @@ import { gamesRef } from "./Firebase";
 export default function BoardgameSearch() {
   const [inputText, setInputText] = useState("");
   const [games, setGames] = useState([]);
+  const [game, setGame] = React.useContext(gameContext);
+
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
@@ -58,7 +60,6 @@ export default function BoardgameSearch() {
     />
   );
 
-  const [game, setGame] = React.useContext(gameContext);
 
   const filterBoardgame = () => {
     return games.filter((boardgame) =>
@@ -69,7 +70,7 @@ export default function BoardgameSearch() {
   let count = 0;
   let boardgames_grid = [];
 
-  if (filterBoardgame().length == 0) {
+  if (filterBoardgame().length === 0) {
     games.forEach((element) => {
       count = count + 1;
 
@@ -103,7 +104,6 @@ export default function BoardgameSearch() {
     });
   }
 
-  filterBoardgame();
 
   return (
     <div>

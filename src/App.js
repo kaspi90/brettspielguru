@@ -5,18 +5,18 @@ import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@emotion/react";
 import DataTable from "./components/DataTable";
 import Kartenhüllen from "./components/Sleeves";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { gameContext } from "./components/GameContext";
 import Impressum from "./components/Imprint.js";
 import Datenschutz from "./components/PrivacyProtection.js";
-import { Box, width } from "@mui/system";
+import { Box } from "@mui/system";
 import InstagramBlog from "./components/InstagramBlog";
 import BoardgameSearch from "./components/BoardgameSearch";
 import Footer from "./components/Footer";
 import ProductOverview from "./components/ProductOverview";
 import AddBoardgame from "./components/AddBoardgame";
 import Login from "./components/Login";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { Navigate, Outlet } from "react-router-dom";
 
 const theme = createTheme({
@@ -52,7 +52,6 @@ function App() {
       if (auth.currentUser) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
         return <Outlet />;
 
         // ...

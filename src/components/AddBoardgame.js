@@ -26,7 +26,6 @@ import Brettspiel from "./Boardgame";
 import { useState } from "react";
 import { storage } from "./Firebase";
 import { useEffect } from "react";
-import { getAuth } from "firebase/auth";
 
 import { uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
@@ -95,13 +94,10 @@ const names = [
   "Standard66x91",
 ];
 
-const auth = getAuth();
-
 function AddBoardgame() {
   const [sleeves, setSleeves] = React.useState([]);
   const [boardgameName, setBoardgameName] = React.useState("");
   const [boardgameGeekId, setboardgameGeekId] = React.useState("");
-  const [boardgameImage, setboardgameImage] = React.useState(); // file
   const [sleeveAll, setSleeveAll] = React.useState(); // file
 
   const [file, setFile] = useState("");
@@ -116,9 +112,7 @@ function AddBoardgame() {
       boardgameName,
       sleeveAll,
       imageUrl,
-      "link",
-      boardgameGeekId,
-      "bild2"
+      boardgameGeekId
     );
     e.preventDefault();
     gamesRef.push(newBoardgame);
@@ -150,9 +144,7 @@ function AddBoardgame() {
     );
   }, [file]);
 
-  function handleUpload() {}
-
-  const handleChange = (event) => {
+  const handleFormSleeveChange = (event) => {
     const {
       target: { value },
     } = event;
@@ -173,13 +165,13 @@ function AddBoardgame() {
     );
   };
 
-  let resulti = [];
+  let result = [];
 
   useEffect(() => {
     inputFields.forEach((element) => {
       for (let index = 0; index < images.length; index++) {
         if (images[index].name === element.sleeve) {
-          resulti.push({
+          result.push({
             name: element.sleeve,
             image: images[index].image,
             feld: element.value,
@@ -189,10 +181,10 @@ function AddBoardgame() {
       }
     });
 
-    setSleeveAll(resulti);
+    setSleeveAll(result);
   }, [inputFields]);
 
-  const handleFormChange = (index, event) => {
+  const handleSleeveChange = (index, event) => {
     setInputFields((fields) =>
       fields.map((field) =>
         field.sleeve === index ? { ...field, value: event.target.value } : field
@@ -203,15 +195,10 @@ function AddBoardgame() {
     setBoardgameName(event.target.value);
   };
 
-  const handleboardgameImage = (event) => {
-    setboardgameImage(event.target.value);
-  };
-
   const handleChangeboardgameGeekId = (event) => {
     setboardgameGeekId(event.target.value);
   };
 
-  const [matchingSleeves, setMatchingSleeves] = React.useState([]);
   let count = 0;
 
   function RenderElement(props) {
@@ -219,13 +206,15 @@ function AddBoardgame() {
       if (element.name === props.currentSleeve) {
         return (
           <Box key={props.currentSleeve}>
-            <img src={element.image} />
+            <img src={element.image} alt={element.name} />
 
             {props.currentSleeve}
             <TextField
               label="Anzahl"
               variant="outlined"
-              onChange={(event) => handleFormChange(props.currentSleeve, event)}
+              onChange={(event) =>
+                handleSleeveChange(props.currentSleeve, event)
+              }
               value={
                 inputFields.find((val) => val.sleeve === props.currentSleeve)
                   .value
@@ -264,7 +253,7 @@ function AddBoardgame() {
           onChange={handleChangeImage}
         />
         <label htmlFor="raised-button-file">
-          <Button onClick={handleUpload} variant="contained" component="span">
+          <Button variant="contained" component="span">
             Brettspiel Bild-Upload
           </Button>
         </label>
@@ -290,7 +279,7 @@ function AddBoardgame() {
             id="Sleeves"
             multiple
             value={sleeves}
-            onChange={handleChange}
+            onChange={handleFormSleeveChange}
             input={<OutlinedInput label="Kartenhüllen" />}
             renderValue={(selected) => selected.join(", ")}
             MenuProps={MenuProps}
