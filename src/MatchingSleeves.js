@@ -36,8 +36,6 @@ function MatchingSleeves() {
     ref.on(
       "value",
       (snapshot) => {
-        console.log(Object.values(JSON.parse(JSON.stringify(snapshot.val()))));
-
         setbrettspieleFirebase(
           Object.values(JSON.parse(JSON.stringify(snapshot.val())))
         );
@@ -53,7 +51,6 @@ function MatchingSleeves() {
 
   const foundBoardgame = brettspieleFirebase.find((item) => {
     if (item.name == game) {
-      console.log(item);
       return item;
     }
   });
@@ -62,18 +59,13 @@ function MatchingSleeves() {
 
   let count;
   if (foundBoardgame) {
-    console.log("foundboardgame" + foundBoardgame);
     count = foundBoardgame.kartenhuellen.length;
-    console.log("count" + count);
 
     getBoardgameDescription(foundBoardgame.boardgamegeekId);
-    console.log(foundBoardgame.boardgamegeekId);
   }
 
   let sleeves = [];
   for (var i = 0; i < count; i++) {
-    console.log("hier" + foundBoardgame.kartenhuellen[i].image);
-
     sleeves.push(
       <Grid key={"grid" + i} item xs={6} md={2}>
         <Item>

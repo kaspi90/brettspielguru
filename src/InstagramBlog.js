@@ -29,14 +29,6 @@ function InstagramBlog() {
     instagramFeed();
   }, []);
 
-  console.log(resultArray);
-
-  /*
-  if (typeof resultArray.data !== "undefined" && resultArray.data.length > 0) {
-    console.log(resultArray.data[0].caption);
-    data = resultArray.data;
-  } */
-
   if (resultArray.length == 0) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center" }}>

@@ -1,6 +1,5 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/system";
 
 function Impressum() {
   return (

@@ -20,10 +20,6 @@ import Login from "./Login";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Navigate, Outlet } from "react-router-dom";
 
-/*
-CreateBoardgame();
-*/
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -51,40 +47,24 @@ function App() {
   const [game, setGame] = React.useState("");
   const auth = getAuth();
   const user = auth.currentUser;
-  console.log("user" + user);
 
   const ProtectedRoute =
     (auth,
     (user) => {
       if (auth.currentUser) {
-        console.log(user);
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        console.log("richtig");
         return <Outlet />;
 
         // ...
       } else {
         // User is signed out
         // ...
-        console.log("falsch");
 
         return <Navigate to="/login" replace />;
       }
     });
-
-  /*
-  const ProtectedRoute = ({ user }) => {
-    if (!user) {
-      console.log("nicht richtig");
-
-      return <Navigate to="/login" replace />;
-    } else {
-      console.log("testtiii");
-      return <Outlet />;
-    }
-  }; */
 
   return (
     <Router>

@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import * as React from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Checkbox from "@mui/material/Checkbox";
@@ -111,7 +111,6 @@ function AddBoardgame() {
   const [imageUrl, setImageUrl] = useState("");
 
   const uploadTask = uploadBytesResumable(storageRef, file);
-  console.log("felder" + inputFields);
   const handleClick = (e) => {
     let newBoardgame = Brettspiel(
       boardgameName,
@@ -123,7 +122,6 @@ function AddBoardgame() {
     );
     e.preventDefault();
     gamesRef.push(newBoardgame);
-    console.log("The link was clicked.");
   };
 
   function handleChangeImage(event) {
@@ -161,7 +159,6 @@ function AddBoardgame() {
     const newSleeves = typeof value === "string" ? value.split(",") : value;
     setSleeves(newSleeves);
 
-    console.log("newsleeve" + newSleeves);
     setInputFields((fields) =>
       newSleeves.map((sleeve) => {
         const field = fields.find((field) => field.sleeve === sleeve);
@@ -174,32 +171,6 @@ function AddBoardgame() {
         };
       })
     );
-
-    /*
-    let blubi = [];
-    images.forEach((element) => {
-      for (let index = 0; index < newSleeves.length; index++) {
-        if (newSleeves[index] === element.name) {
-          blubi.push(element.image);
-          setSleeveImages(blubi);
-        }
-      }
-    });
- */
-    /*
-    let zipped = images.map((x, i) => {
-      if (newSleeves[i] === x.name) {
-        console.log("bluberererer");
-      }
-    });
-    console.log("zippied" + zipped);
-
-    /* const result = newSleeves.map(
-      (sleeveObject) =>
-        sleeveObject === images.map((imageObject) => imageObject.name)
-    ); */
-
-    //console.log("result" + result);
   };
 
   let resulti = [];
@@ -218,18 +189,6 @@ function AddBoardgame() {
       }
     });
 
-    /*
-
-    const result = inputFields.map((kartenhuelle) => {
-      for (let index = 0; index < images.length; index++) {
-        if (images[index].name === kartenhuelle.sleeve) {
-          kartenhuelle.push(images[index].image);
-          return kartenhuelle;
-        }
-      } 
-    });*/
-    console.log("result" + resulti);
-
     setSleeveAll(resulti);
   }, [inputFields]);
 
@@ -244,13 +203,6 @@ function AddBoardgame() {
     setBoardgameName(event.target.value);
   };
 
-  /*
-  const handleChangeSleeveCounter = (event) => {
-    setsleeveCounter({ [event.target.name]: event.target.value });
-
-    console.log("Sleevecounter " + sleeveCounter);
-  }; */
-
   const handleboardgameImage = (event) => {
     setboardgameImage(event.target.value);
   };
@@ -258,8 +210,6 @@ function AddBoardgame() {
   const handleChangeboardgameGeekId = (event) => {
     setboardgameGeekId(event.target.value);
   };
-
-  console.log(sleeves);
 
   const [matchingSleeves, setMatchingSleeves] = React.useState([]);
   let count = 0;

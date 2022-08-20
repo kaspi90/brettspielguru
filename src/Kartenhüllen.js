@@ -7,11 +7,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import StarIcon from "@mui/icons-material/Star";
 import DownloadIcon from "@mui/icons-material/Download";
 import PrintIcon from "@mui/icons-material/Print";
 import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
-import { maxHeight } from "@mui/system";
 import { Typography } from "@mui/material";
 
 const PDFViewerBrettspielguru = () => {

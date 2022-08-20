@@ -21,12 +21,10 @@ function Login() {
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
-    console.log("Brettspielname " + email);
   };
 
   const handleChangePassword = (event) => {
     setPassword(event.target.value);
-    console.log("Brettspielname " + password);
   };
 
   const handleClick = (e) => {
@@ -34,7 +32,6 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         someEventHandler();
 
         // ...
@@ -45,14 +42,12 @@ function Login() {
       });
 
     e.preventDefault();
-    console.log("The link was clicked.");
   };
 
   const handleClickOut = (e) => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        console.log("raus");
       })
       .catch((error) => {
         // An error happened.

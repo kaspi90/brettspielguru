@@ -19,17 +19,12 @@ export default function BoardgameSearch() {
     setInputText(lowerCase);
   };
 
-  console.log("boardgameref" + boardgameRef);
-
   // Attach an asynchronous callback to read the data at our posts reference
   useEffect(() => {
     gamesRef.on(
       "value",
       (snapshot) => {
-        console.log("huhu" + snapshot.val());
-
         const data = Object.values(JSON.parse(JSON.stringify(snapshot.val())));
-        console.log(data);
         setGames(data);
       },
       (errorObject) => {
