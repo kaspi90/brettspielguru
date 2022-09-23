@@ -108,6 +108,7 @@ function AddBoardgame() {
 
   const uploadTask = uploadBytesResumable(storageRef, file);
   const handleClick = (e) => {
+    // const
     let newBoardgame = Brettspiel(
       boardgameName,
       sleeveAll,
@@ -164,7 +165,7 @@ function AddBoardgame() {
       })
     );
   };
-
+  // kann auch const sein
   let result = [];
 
   useEffect(() => {
@@ -185,6 +186,7 @@ function AddBoardgame() {
   }, [inputFields]);
 
   const handleSleeveChange = (index, event) => {
+    // clean
     setInputFields((fields) =>
       fields.map((field) =>
         field.sleeve === index ? { ...field, value: event.target.value } : field
@@ -223,6 +225,8 @@ function AddBoardgame() {
           </Box>
         );
       } else {
+        // mann kann auch React.Fragment benutzten um leeres element mit key zu setzten
+        // oder wenn mans in einer list hast einfach null und später .filter(e=>e!==null)
         return <div key={element.name}></div>;
       }
     });
@@ -271,7 +275,6 @@ function AddBoardgame() {
         />
       </Box>
       <Box mb={2}>
-        {" "}
         <FormControl fullWidth>
           <InputLabel id="Sleeves">Kartenhüllen</InputLabel>
           <Select

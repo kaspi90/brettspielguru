@@ -19,12 +19,17 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+// nicht gut
 let classes;
 
 export default function DataTable() {
+  // nicht gut
   classes = useStyles();
 
+  // sehr tiefes nesting
   return <MatchingSleeves></MatchingSleeves>;
 }
-
+// nicht gut
 export { Item, classes };
+
+// besser useStyles exportieren und jedes component selber rufen lassen

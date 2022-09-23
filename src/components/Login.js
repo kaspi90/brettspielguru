@@ -12,6 +12,7 @@ function Login() {
 
   const navigate = useNavigate();
 
+  // name sollte beschreibend sein
   const someEventHandler = () => {
     navigate("/hinzufuegen");
   };
@@ -24,6 +25,7 @@ function Login() {
     setPassword(event.target.value);
   };
 
+  // ich denke mal nicht fertig?
   const handleClick = (e) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

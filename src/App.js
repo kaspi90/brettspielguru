@@ -18,6 +18,7 @@ import AddBoardgame from "./components/AddBoardgame";
 import Login from "./components/Login";
 import { getAuth } from "firebase/auth";
 import { Navigate, Outlet } from "react-router-dom";
+import { Container } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -34,6 +35,7 @@ const theme = createTheme({
   },
 });
 
+// bestenfalls eigenes component, weil auch eigene Seite
 const Sleeves = () => (
   <div>
     <br />
@@ -47,6 +49,7 @@ function App() {
   const user = auth.currentUser;
 
   const ProtectedRoute =
+    // ist ein tuple mit auth und (user)=>JSX
     (auth,
     (user) => {
       if (auth.currentUser) {
@@ -68,6 +71,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <gameContext.Provider value={[game, setGame]}>
           <ResponsiveAppBar />
+          {/* breite normalerweise absolut nicht relativ, da auf mobil alles ausgenutzt werden soll */}
           <Box maxWidth={"80%"} justify="center" m="auto" padding={2}>
             <Routes>
               <Route path="/" element={<BoardgameSearch />} />

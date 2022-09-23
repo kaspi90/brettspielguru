@@ -15,6 +15,7 @@ export default function BoardgameSearch() {
   const [games, setGames] = useState([]);
   const [game, setGame] = React.useContext(gameContext);
 
+  // immer const nehmen
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
@@ -25,6 +26,7 @@ export default function BoardgameSearch() {
     gamesRef.on(
       "value",
       (snapshot) => {
+        // was ist das?
         const data = Object.values(JSON.parse(JSON.stringify(snapshot.val())));
         setGames(data);
       },
@@ -44,6 +46,7 @@ export default function BoardgameSearch() {
         <TextField
           onKeyPress={(e) => {
             if (e.key === "Enter") {
+              // unnötige klammern
               {
                 inputHandler(e);
               }
@@ -59,14 +62,14 @@ export default function BoardgameSearch() {
       )}
     />
   );
-
-
-  const filterBoardgame = () => {
+  // ist ok aber besser sind pure functions
+  const filterBoardgame = (/* input */) => {
     return games.filter((boardgame) =>
       boardgame.name.toLowerCase().includes(inputText)
     );
   };
 
+  // runs every render, a useEffect would be better (with proper dependencies)
   let count = 0;
   let boardgames_grid = [];
 
@@ -103,7 +106,6 @@ export default function BoardgameSearch() {
       );
     });
   }
-
 
   return (
     <div>

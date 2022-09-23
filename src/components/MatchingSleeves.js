@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -14,7 +14,7 @@ import { useEffect } from "react";
 function MatchingSleeves() {
   const [boardgameDescription, setBoardgameDescription] = React.useState("");
   const [brettspieleFirebase, setbrettspieleFirebase] = React.useState([]);
-
+  // useState oder useRef(wenn nicht rerendern soll bei Änderungen)
   let boardgameJSON;
 
   const getBoardgameDescription = (boardgamegeekId1) => {
@@ -28,11 +28,11 @@ function MatchingSleeves() {
         setBoardgameDescription(clearStringDescription);
       });
   };
-
+  // warum?
   const ref = gamesRef;
 
   useEffect(() => {
-    ref.on(
+    return ref.on(
       "value",
       (snapshot) => {
         setbrettspieleFirebase(
@@ -54,6 +54,10 @@ function MatchingSleeves() {
     } else return null;
   });
 
+  // läuft alles jeden render, in ue ist besser
+
+  // kanns auch verkürzen:
+  // const c = foundBoardgame?.kartenhuellen?.length ?? 0;
 
   let count;
   if (foundBoardgame) {

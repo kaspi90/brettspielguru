@@ -19,16 +19,20 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function InstagramBlog() {
   const [resultArray, setResultArray] = useState([]);
+  const [loading, setLoading] = React.useState(true);
+
   let data;
   useEffect(() => {
     const instagramFeed = async () => {
       await axios
         .get("https://v1.nocodeapi.com/kaspi/instagram/KOTShLfOXSyGtqWm")
-        .then((response) => setResultArray(response?.data?.data));
+        .then((response) => setResultArray(response?.data?.data)); // ?? []
     };
     instagramFeed();
   }, []);
-
+  // von der logik her würde ich einen loading us machen, welcher auf then,catch auflößt
+  // sonst lädt es unendlich, was blöd ist (dann kann man auch ne error message anzeigen)
+  // immer 3 gleich zeichen sonst macht js type conversions
   if (resultArray.length == 0) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center" }}>

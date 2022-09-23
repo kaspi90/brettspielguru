@@ -25,4 +25,7 @@ export const storage = firebase.storage().ref();
 export const boardgameRef = databaseRef.child("boardgame");
 export const gamesRef = databaseRef.child("games");
 
+// export {firebase};
+// oder export default firebase;
+
 export default { firebase };
